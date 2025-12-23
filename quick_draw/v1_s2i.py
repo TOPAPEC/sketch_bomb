@@ -3,7 +3,7 @@ import requests
 import json
 from PIL import Image, ImageDraw
 import torch
-from diffusers import StableDiffusionControlNetPipeline, ControlNetModel, DDIMScheduler
+from diffusers import StableDiffusionControlNetPipeline, ControlNetModel, EulerDiscreteScheduler
 import cv2
 
 
@@ -41,8 +41,12 @@ class BatchQuickDrawToArt:
             safety_checker=None
         ).to(self.device)
         
-        self.sketch_pipe.scheduler = DDIMScheduler.from_config(self.sketch_pipe.scheduler.config)
-        self.color_pipe.scheduler = DDIMScheduler.from_config(self.color_pipe.scheduler.config)
+        self.sketch_pipe.scheduler = EulerDiscreteScheduler.from_config(
+            self.sketch_pipe.scheduler.config
+        )
+        self.color_pipe.scheduler = EulerDiscreteScheduler.from_config(
+            self.color_pipe.scheduler.config
+        )
         
         self.sketch_pipe.enable_attention_slicing()
         self.color_pipe.enable_attention_slicing()
@@ -107,45 +111,40 @@ class BatchQuickDrawToArt:
     
     def batch_realistic_sketch(self, control_images, prompt, num_inference_steps=50, strong_steps=10):
         print(f"Creating {len(control_images)} realistic sketches...")
-        
-        cfg_schedule = np.concatenate([
-            np.full(strong_steps, 8.0),
-            np.linspace(8.0, 3.0, num_inference_steps - strong_steps)
-        ])
-        
-        cn_schedule = np.concatenate([
-            np.full(strong_steps, 0.9),
-            np.linspace(0.1, 0.1, num_inference_steps - strong_steps)
-        ])
-        
-        def guidance_callback(pipe, step_index, timestep, callback_kwargs):
-            callback_kwargs['guidance_scale'] = float(cfg_schedule[step_index])
-            
-            if 'down_block_additional_residuals' in callback_kwargs:
-                scale = float(cn_schedule[step_index])
-                callback_kwargs['down_block_additional_residuals'] = [
-                    res * scale for res in callback_kwargs['down_block_additional_residuals']
-                ]
-                callback_kwargs['mid_block_additional_residual'] = (
-                    callback_kwargs['mid_block_additional_residual'] * scale
-                )
-            
-            return callback_kwargs
-        
         results = []
+        
         for i, ctrl_img in enumerate(control_images):
             print(f"  Processing {i+1}/{len(control_images)}")
+            generator = torch.Generator(device=self.device).manual_seed(42 + i)
             
+            # Get full timestep schedule
+            self.sketch_pipe.scheduler.set_timesteps(num_inference_steps, device=self.device)
+            timesteps = self.sketch_pipe.scheduler.timesteps.cpu()  # Convert to CPU
+            
+            # Stage 1: Strong ControlNet
+            latents = self.sketch_pipe(
+                prompt=prompt,
+                negative_prompt="colored, colorful, ugly, blurry, poor quality, distorted",
+                image=ctrl_img,
+                timesteps=timesteps[:strong_steps],
+                guidance_scale=8.0,
+                controlnet_conditioning_scale=0.9,
+                generator=generator,
+                output_type="latent"
+            ).images
+            
+            # Stage 2: Weak ControlNet
             result = self.sketch_pipe(
                 prompt=prompt,
                 negative_prompt="colored, colorful, ugly, blurry, poor quality, distorted",
                 image=ctrl_img,
-                num_inference_steps=num_inference_steps,
-                guidance_scale=8.0,
-                controlnet_conditioning_scale=0.9,
-                callback_on_step_end=guidance_callback,
-                generator=torch.Generator(device=self.device).manual_seed(42 + i)
+                latents=latents,
+                timesteps=timesteps[strong_steps:],
+                guidance_scale=3.0,
+                controlnet_conditioning_scale=0.1,
+                generator=generator
             ).images[0]
+            
             results.append(result)
         
         return results

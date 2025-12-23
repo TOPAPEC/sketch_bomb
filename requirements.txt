@@ -1,4 +1,9 @@
-transformers
+torch
+torchvision
 diffusers
-ultralytics
+transformers
+accelerate
+Pillow
+numpy
+requests
 opencv-python

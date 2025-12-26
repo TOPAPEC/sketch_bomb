@@ -7,3 +7,5 @@ Pillow
 numpy
 requests
 opencv-python
+k-diffusion
+controlnet_aux

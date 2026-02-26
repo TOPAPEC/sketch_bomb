@@ -1,5 +1,11 @@
 # Интеллектуальный ассистент для художников: превращение набросков в реалистичные изображения с помощью ControlNet и текстовых подсказок
 
+## Current Pipeline
+
+Crude sketch → SigLIP2 match to DomainNet → ControlNet + Dreamshaper 8 → Refiner → Best-of-4 selection by SigLIP2 scoring.
+
+![Pipeline Demo](demonstration/pipeline_demo.png)
+
 Номер темы 90
 Уровень темы pro 
 

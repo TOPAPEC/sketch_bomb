@@ -5,7 +5,10 @@ from PIL import Image, ImageDraw, ImageFont
 import torch
 from diffusers import (StableDiffusionControlNetPipeline, StableDiffusionImg2ImgPipeline,
                        StableDiffusionPipeline, ControlNetModel, EulerDiscreteScheduler)
-from transformers import AutoProcessor, AutoModel
+from transformers import (AutoProcessor, AutoModel, AutoImageProcessor,
+                          AutoModelForImageClassification, SiglipImageProcessor,
+                          SiglipProcessor, GemmaTokenizerFast)
+from struct import unpack
 from rembg import remove as rembg_remove
 import cv2
 from pathlib import Path
@@ -29,73 +32,18 @@ load_env()
 
 CLASSES = ["cat", "car", "flower", "house", "bird", "apple"]
 
-PROMPTS = {
-    "cat": (
-        "a cute cat, feline, (digital painting:1.2), detailed fur and whiskers, "
-        "cat ears, cat face, expressive eyes, soft shading, best quality, "
-        "solo animal, full body, concept art style"
-    ),
-    "car": (
-        "a car, (digital illustration:1.2), "
-        "colorful, detailed wheels and windows, clean lines, "
-        "best quality, sharp focus, simple background"
-    ),
-    "flower": (
-        "a beautiful flower, (botanical illustration:1.3), "
-        "detailed petals, vivid colors, sharp focus, "
-        "best quality, natural lighting"
-    ),
-    "house": (
-        "a house with roof and windows, (children's book illustration:1.2), "
-        "colorful, detailed facade, charming style, "
-        "best quality, clean lines"
-    ),
-    "bird": (
-        "a colorful bird, (nature illustration:1.2), "
-        "detailed feathers, vivid plumage, sharp beak, "
-        "best quality, digital art"
-    ),
-    "apple": (
-        "a red apple, (digital painting:1.2), "
-        "glossy, realistic shading, vivid red color, "
-        "best quality, sharp focus, still life"
-    ),
-}
+_PROMPTS_PATH = Path(__file__).parent / "prompts.json"
 
-NEGATIVES = {
-    "cat": (
-        "easynegative, (worst quality:1.4), low quality, "
-        "dog, canine, human, person, multiple cats, deformed face, extra limbs, "
-        "blurry, ugly, text, watermark"
-    ),
-    "car": (
-        "easynegative, (worst quality:1.4), low quality, "
-        "deformed, broken wheels, realistic photo, "
-        "blurry, ugly, text, watermark, letters, words, writing"
-    ),
-    "flower": (
-        "easynegative, (worst quality:1.4), low quality, "
-        "wilted, dead, brown petals, "
-        "blurry, ugly, text, watermark"
-    ),
-    "house": (
-        "easynegative, (worst quality:1.4), low quality, "
-        "destroyed, ruins, deformed windows, "
-        "blurry, ugly, text, watermark"
-    ),
-    "bird": (
-        "easynegative, (worst quality:1.4), low quality, "
-        "human, deformed wings, extra legs, "
-        "blurry, ugly, text, watermark"
-    ),
-    "apple": (
-        "easynegative, (worst quality:1.4), low quality, "
-        "rotten, bitten, multiple apples, "
-        "blurry, ugly, text, watermark"
-    ),
-}
+def _load_prompts():
+    if _PROMPTS_PATH.exists():
+        with open(_PROMPTS_PATH) as f:
+            return json.load(f)
+    return {"prompts": {}, "negatives": {}, "default_negative": ""}
 
-DEFAULT_NEG = (
+_PROMPT_DATA = _load_prompts()
+PROMPTS = _PROMPT_DATA.get("prompts", {})
+NEGATIVES = _PROMPT_DATA.get("negatives", {})
+DEFAULT_NEG = _PROMPT_DATA.get("default_negative",
     "easynegative, (worst quality, low quality:1.4), "
     "people, human, text, watermark, ugly, blurry, deformed"
 )
@@ -121,11 +69,16 @@ def remove_bg(img, bg=(255, 255, 255)):
 
 
 class SiglipScorer:
+    MODEL_ID = "google/siglip2-base-patch16-224"
+
     def __init__(self, device="cuda"):
         self.device = device
         self.model = AutoModel.from_pretrained(
-            "google/siglip2-base-patch16-224", torch_dtype=torch.float16).to(device)
-        self.processor = AutoProcessor.from_pretrained("google/siglip2-base-patch16-224")
+            self.MODEL_ID, torch_dtype=torch.float16).to(device)
+        self.processor = SiglipProcessor(
+            image_processor=SiglipImageProcessor.from_pretrained(self.MODEL_ID),
+            tokenizer=GemmaTokenizerFast.from_pretrained(self.MODEL_ID),
+        )
 
     @torch.no_grad()
     def score(self, images, texts):
@@ -137,6 +90,70 @@ class SiglipScorer:
         return float(self.score([image], [text])[0])
 
 
+class BeitSketchClassifier:
+    """Classify raw sketch images using kmewhort/beit-sketch-classifier (345 QuickDraw classes)."""
+
+    MODEL_ID = "kmewhort/beit-sketch-classifier"
+
+    def __init__(self, device="cuda"):
+        self.device = device
+        self.processor = AutoImageProcessor.from_pretrained(self.MODEL_ID)
+        self.model = AutoModelForImageClassification.from_pretrained(
+            self.MODEL_ID, torch_dtype=torch.float16
+        ).to(device).eval()
+
+    @staticmethod
+    def bin_to_pil(packed_drawing):
+        """Convert QuickDraw packed binary bytes to 224x224 RGB PIL image."""
+        padding = 8
+        radius = 7
+        scale = (224.0 - (2 * padding)) / 256
+
+        fh = io.BytesIO(packed_drawing)
+        _key_id, = unpack('Q', fh.read(8))
+        _country, = unpack('2s', fh.read(2))
+        _recognized, = unpack('b', fh.read(1))
+        _timestamp, = unpack('I', fh.read(4))
+        n_strokes, = unpack('H', fh.read(2))
+        strokes = []
+        for _ in range(n_strokes):
+            n_points, = unpack('H', fh.read(2))
+            fmt = str(n_points) + 'B'
+            x = unpack(fmt, fh.read(n_points))
+            y = unpack(fmt, fh.read(n_points))
+            strokes.append((x, y))
+
+        image = np.full((224, 224), 255, np.uint8)
+        for stroke in strokes:
+            prev_x = round(stroke[0][0] * scale)
+            prev_y = round(stroke[1][0] * scale)
+            for i in range(1, len(stroke[0])):
+                x = round(stroke[0][i] * scale)
+                y = round(stroke[1][i] * scale)
+                cv2.line(image, (padding + prev_x, padding + prev_y),
+                         (padding + x, padding + y), 0, radius, -1)
+                prev_x, prev_y = x, y
+        return Image.fromarray(image).convert("RGB")
+
+    @torch.no_grad()
+    def classify(self, image, top_k=5):
+        """Classify a PIL RGB sketch image. Returns list of (label, score) tuples."""
+        inputs = self.processor(image, return_tensors="pt").to(self.device)
+        logits = self.model(**{k: v.half() for k, v in inputs.items()}).logits
+        probs = torch.softmax(logits, dim=-1)
+        topk = torch.topk(probs, top_k)
+        results = []
+        for score, idx in zip(topk.values[0], topk.indices[0]):
+            label = self.model.config.id2label[idx.item()]
+            results.append((label, float(score)))
+        return results
+
+    def predict(self, image):
+        """Return the single best predicted label for a sketch image."""
+        results = self.classify(image, top_k=1)
+        return results[0][0]
+
+
 SD_MODELS = {
     "sd15": "runwayml/stable-diffusion-v1-5",
     "dreamshaper": "Lykon/dreamshaper-8",
@@ -146,12 +163,13 @@ SD_MODELS = {
 
 
 class Pipeline:
-    def __init__(self, device="cuda"):
+    def __init__(self, device="cuda", use_beit=True):
         self.device = device
         self.pipe = None
         self.refiner = None
         self.txt2img = None
         self.scorer = SiglipScorer(device)
+        self.classifier = BeitSketchClassifier(device) if use_beit else None
         self.model_name = None
 
     def load(self, model_key="sd15"):
@@ -206,6 +224,22 @@ class Pipeline:
         if do_refine:
             imgs = [self.refine(im, label, seed=seed+i) for i, im in enumerate(imgs)]
         return [remove_bg(im) for im in imgs]
+
+    def classify_sketch(self, sketch_img, top_k=5):
+        """Classify a raw sketch image using BEiT. Returns list of (label, score)."""
+        if self.classifier is None:
+            raise RuntimeError("BEiT classifier not loaded (use_beit=False)")
+        return self.classifier.classify(sketch_img, top_k=top_k)
+
+    def classify_and_generate(self, sketch_img, n=4, do_refine=True, top_k=5):
+        """Classify a raw sketch, then generate images for the predicted class.
+        Returns (predicted_label, top_k_predictions, candidate_images).
+        """
+        predictions = self.classify_sketch(sketch_img, top_k=top_k)
+        label = predictions[0][0]
+        ctrl = to_lineart(sketch_img)
+        candidates = self.gen_candidates(ctrl, label, n=n, do_refine=do_refine)
+        return label, predictions, candidates
 
 
 class KimiJudge:
@@ -275,16 +309,22 @@ class DomainNetMatcher:
         return feats.cpu()
 
     def _build_index(self, classes, batch_size):
+        if not DOMAINNET_ROOT.exists():
+            raise FileNotFoundError(
+                f"DomainNet sketch directory not found: {DOMAINNET_ROOT}\n"
+                f"Download DomainNet sketch split and place it at: {DOMAINNET_ROOT}"
+            )
         print("Building DomainNet SigLIP2 index...")
+        missing = []
         for cls in classes:
-            cls_dir = DOMAINNET_ROOT / cls
+            # DomainNet uses underscores, QuickDraw uses spaces
+            cls_dir = DOMAINNET_ROOT / cls.replace(" ", "_")
             if not cls_dir.exists():
-                print(f"  {cls}: dir not found, skipping")
+                missing.append(cls)
                 continue
             paths = sorted([p for p in cls_dir.iterdir() if p.suffix in ('.jpg', '.png', '.jpeg')])
             if not paths:
-                print(f"  {cls}: no images found")
-                continue
+                raise FileNotFoundError(f"DomainNet class '{cls}' directory exists but contains no images: {cls_dir}")
             vecs = []
             for i in range(0, len(paths), batch_size):
                 batch_paths = paths[i:i+batch_size]
@@ -292,12 +332,17 @@ class DomainNetMatcher:
                 vecs.append(self._embed_batch(imgs))
             self.db[cls] = (torch.cat(vecs, dim=0), paths)
             print(f"  {cls}: {len(paths)} images indexed")
+        if missing:
+            raise FileNotFoundError(
+                f"DomainNet class directories not found for: {missing}\n"
+                f"Expected at: {DOMAINNET_ROOT}/<class_name>/"
+            )
 
     @torch.no_grad()
     def match(self, query_img, cls):
         """Return (best_domainnet_image, best_path, similarity_score)."""
         if cls not in self.db:
-            return query_img, None, 0.0
+            raise KeyError(f"Class '{cls}' not in DomainNet index. Available: {list(self.db.keys())}")
         db_vecs, db_paths = self.db[cls]
         q_vec = self._embed_batch([query_img])  # (1, dim)
         sims = (q_vec @ db_vecs.T).squeeze(0)   # (N,)
@@ -305,6 +350,23 @@ class DomainNetMatcher:
         best_path = db_paths[best_idx]
         best_img = Image.open(best_path).convert("RGB")
         return best_img, best_path, float(sims[best_idx])
+
+    @torch.no_grad()
+    def match_topk(self, query_img, cls, k=4):
+        """Return list of (image, path, similarity) for top-k matches."""
+        if cls not in self.db:
+            raise KeyError(f"Class '{cls}' not in DomainNet index. Available: {list(self.db.keys())}")
+        db_vecs, db_paths = self.db[cls]
+        q_vec = self._embed_batch([query_img])
+        sims = (q_vec @ db_vecs.T).squeeze(0)
+        k = min(k, len(db_paths))
+        top_indices = sims.argsort(descending=True)[:k]
+        results = []
+        for idx in top_indices:
+            idx = int(idx)
+            img = Image.open(db_paths[idx]).convert("RGB")
+            results.append((img, db_paths[idx], float(sims[idx])))
+        return results
 
 
 def fetch_quickdraw(category, n, offset=0):
@@ -365,7 +427,7 @@ def log_experiment(path, desc, metrics):
         f.write(f"| {ts} | {desc} | {m} |\n")
 
 
-def run(classes=None, spc=1, model_key="sd15"):
+def run(classes=None, spc=1, model_key="sd15", use_beit=True):
     if classes is None:
         classes = CLASSES[:3]
 
@@ -373,7 +435,7 @@ def run(classes=None, spc=1, model_key="sd15"):
     out.mkdir(parents=True, exist_ok=True)
     md = Path("experiments.md")
 
-    pipe = Pipeline()
+    pipe = Pipeline(use_beit=use_beit)
     pipe.load(model_key)
 
     random.seed(2026)
@@ -391,9 +453,20 @@ def run(classes=None, spc=1, model_key="sd15"):
     print(f"\n{'='*50}\nEXP 6: DomainNet-matched sketch + refiner + best-of-4\n{'='*50}")
     matcher = DomainNetMatcher(pipe.scorer, classes, batch_size=16)
     exp6_scores = []
+    beit_correct = 0
     for i, (lbl, drawing) in enumerate(all_data):
         print(f"  {i+1}/{N} ({lbl})")
         qd_sketch = drawing_to_img(drawing)
+
+        # BEiT classification on raw sketch
+        if pipe.classifier is not None:
+            preds = pipe.classify_sketch(qd_sketch, top_k=5)
+            beit_label = preds[0][0]
+            beit_conf = preds[0][1]
+            if beit_label == lbl:
+                beit_correct += 1
+            print(f"    beit: {beit_label} ({beit_conf:.3f}) | top5: {[(l, f'{s:.3f}') for l, s in preds]}")
+
         dn_sketch, dn_path, sim = matcher.match(qd_sketch, lbl)
         print(f"    matched: {dn_path.name if dn_path else 'none'} (sim={sim:.3f})")
         qd_sketch.save(out / f"exp6_{lbl}_{i}_qd.png")
@@ -414,11 +487,15 @@ def run(classes=None, spc=1, model_key="sd15"):
 
     avg6 = np.mean(exp6_scores)
     print(f"  avg={avg6:.4f} min={min(exp6_scores):.4f} max={max(exp6_scores):.4f}")
+    if pipe.classifier is not None:
+        print(f"  beit accuracy: {beit_correct}/{N} ({beit_correct/N:.1%})")
     log_experiment(md, f"v8 {model_key} DomainNet-matched + BestOf4(SigLIP2)",
                   {"avg_siglip2": avg6, "min": min(exp6_scores), "max": max(exp6_scores)})
 
     print(f"\n{'='*50}\nSUMMARY ({model_key})\n{'='*50}")
     print(f"  DomainNet+B4S: {avg6:.4f}")
+    if pipe.classifier is not None:
+        print(f"  BEiT accuracy: {beit_correct}/{N} ({beit_correct/N:.1%})")
     print(f"\nResults: {out}/")
 
 

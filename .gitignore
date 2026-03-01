@@ -3,3 +3,5 @@ yolov8n.pt
 .venv/
 .env
 data/*
+*.safetensors
+*.pyc

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch Bomb</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0f; color: #eee; font-family: system-ui, sans-serif; display: flex; height: 100vh; overflow: hidden; }
+.left { width: 440px; min-width: 440px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border-right: 1px solid #1a1a2e; }
+.right { flex: 1; padding: 24px; overflow-y: auto; }
+h1 { font-size: 22px; color: #e94560; letter-spacing: -0.5px; }
+canvas { background: #fff; border-radius: 8px; cursor: crosshair; touch-action: none; width: 392px; height: 392px; }
+.toolbar { display: flex; gap: 8px; }
+button { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; transition: opacity 0.15s; }
+button:hover { opacity: 0.85; }
+.btn-clear { background: #222; color: #999; }
+.btn-undo { background: #222; color: #999; }
+.btn-gen { background: #e94560; color: #fff; flex: 1; }
+.btn-gen:disabled { opacity: 0.4; cursor: default; }
+.pred { padding: 14px; background: #16213e; border-radius: 8px; display: none; }
+.pred .lbl { font-size: 28px; font-weight: 700; color: #e94560; }
+.pred .rest { font-size: 12px; color: #666; margin-top: 4px; }
+.section { margin-bottom: 24px; }
+.section-title { font-size: 13px; color: #555; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; border-left: 3px solid #e94560; padding-left: 10px; }
+.grid { display: flex; gap: 12px; flex-wrap: wrap; }
+.stage { background: #111; border-radius: 8px; overflow: hidden; width: 200px; }
+.stage img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; display: block; }
+.stage .cap { padding: 6px 10px; font-size: 12px; color: #777; text-align: center; font-weight: 500; }
+.stage.winner { outline: 2px solid #2d6a4f; outline-offset: -2px; }
+.stage.winner .cap { color: #2d6a4f; }
+.kimi-reason { font-size: 12px; color: #c9a227; font-style: italic; margin-top: 8px; max-width: 700px; }
+.final-stage { width: 300px; }
+.final-stage img { border-radius: 8px; }
+.empty { display: flex; align-items: center; justify-content: center; height: 100%; color: #333; font-size: 15px; }
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+.loading { text-align: center; padding: 60px; color: #e94560; font-size: 15px; animation: pulse 1.5s infinite; }
+</style>
+</head>
+<body>
+<div class="left">
+  <h1>Sketch Bomb</h1>
+  <canvas id="c" width="392" height="392"></canvas>
+  <div class="toolbar">
+    <button class="btn-undo" onclick="undo()">Undo</button>
+    <button class="btn-clear" onclick="clear_()">Clear</button>
+    <button class="btn-gen" id="btn" onclick="generate()">Generate</button>
+  </div>
+  <div class="pred" id="pred"></div>
+</div>
+<div class="right" id="out">
+  <div class="empty">Draw a sketch and hit Generate</div>
+</div>
+<script>
+const c = document.getElementById('c'), ctx = c.getContext('2d');
+let drawing = false, strokes = [], cur = [];
+
+ctx.fillStyle = '#fff';
+ctx.fillRect(0, 0, c.width, c.height);
+
+function stroke(pts) {
+  if (pts.length < 2) return;
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+}
+
+function redraw() {
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, c.width, c.height);
+  strokes.forEach(stroke);
+}
+
+c.onpointerdown = e => {
+  drawing = true;
+  cur = [{ x: e.offsetX, y: e.offsetY }];
+  c.setPointerCapture(e.pointerId);
+};
+
+c.onpointermove = e => {
+  if (!drawing) return;
+  cur.push({ x: e.offsetX, y: e.offsetY });
+  stroke(cur.slice(-2));
+};
+
+c.onpointerup = () => {
+  if (cur.length) strokes.push(cur);
+  drawing = false;
+  cur = [];
+};
+
+function undo() { strokes.pop(); redraw(); }
+function clear_() { strokes = []; redraw(); }
+
+async function generate() {
+  if (!strokes.length) return;
+  const btn = document.getElementById('btn');
+  const out = document.getElementById('out');
+  const pred = document.getElementById('pred');
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  out.innerHTML = '<div class="loading">Running pipeline... BEiT → DomainNet × 4 → ControlNet → SD1.5 → Kimi Judge → rembg</div>';
+  pred.style.display = 'none';
+
+  try {
+    const r = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image: c.toDataURL('image/png') })
+    });
+    const d = await r.json();
+
+    pred.style.display = 'block';
+    pred.innerHTML =
+      `<div class="lbl">${d.label}</div>` +
+      `<div class="rest">${d.predictions.slice(1).map(p => p.label + ' ' + (p.score * 100).toFixed(0) + '%').join(' · ')}</div>` +
+      `<div class="rest">seed ${d.seed}</div>`;
+
+    const pick = d.kimi.pick;
+    let h = '';
+
+    h += '<div class="section"><div class="section-title">Input</div><div class="grid">';
+    h += `<div class="stage"><img src="data:image/png;base64,${d.stages.sketch}"><div class="cap">Your Sketch</div></div>`;
+    h += '</div></div>';
+
+    h += '<div class="section"><div class="section-title">DomainNet Top-4 Matches</div><div class="grid">';
+    d.stages.domainnet.forEach((b, i) => { h += `<div class="stage"><img src="data:image/png;base64,${b}"><div class="cap">#${i+1}</div></div>`; });
+    h += '</div></div>';
+
+    h += '<div class="section"><div class="section-title">Lineart → ControlNet</div><div class="grid">';
+    d.stages.lineart.forEach((b, i) => { h += `<div class="stage"><img src="data:image/png;base64,${b}"><div class="cap">#${i+1}</div></div>`; });
+    h += '</div></div>';
+
+    h += `<div class="section"><div class="section-title">SD1.5 Candidates — Kimi picked #${pick+1}</div><div class="grid">`;
+    d.stages.candidates.forEach((b, i) => { h += `<div class="stage${i===pick?' winner':''}"><img src="data:image/png;base64,${b}"><div class="cap">#${i+1}${i===pick?' ★':''}</div></div>`; });
+    h += '</div>';
+    if (d.kimi.reason) h += `<div class="kimi-reason">Kimi: ${d.kimi.reason}</div>`;
+    h += '</div>';
+
+    h += '<div class="section"><div class="section-title">Final (rembg)</div><div class="grid">';
+    h += `<div class="stage final-stage"><img src="data:image/png;base64,${d.stages.final}"><div class="cap">Winner + BG removed</div></div>`;
+    h += '</div></div>';
+
+    out.innerHTML = h;
+  } catch (e) {
+    out.innerHTML = `<div class="loading" style="color:#f55">${e.message}</div>`;
+  }
+  btn.disabled = false;
+  btn.textContent = 'Generate';
+}
+</script>
+</body>
+</html>

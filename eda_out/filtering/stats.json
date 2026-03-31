@@ -1,0 +1,122 @@
+{
+  "cat": {
+    "count": 130,
+    "min": -12.03125,
+    "max": 2.890625,
+    "mean": -0.14993990384615385,
+    "median": 0.078125,
+    "std": 2.168907096427351,
+    "prompt": "a sketch drawing of a cat",
+    "threshold": 0.078125,
+    "kept": 65,
+    "dropped": 65
+  },
+  "car": {
+    "count": 145,
+    "min": -9.0625,
+    "max": 3.171875,
+    "mean": 0.8537715517241379,
+    "median": 1.265625,
+    "std": 1.6955039726432035,
+    "prompt": "a sketch drawing of a car",
+    "threshold": 1.265625,
+    "kept": 73,
+    "dropped": 72
+  },
+  "flower": {
+    "count": 336,
+    "min": -6.296875,
+    "max": 3.078125,
+    "mean": -0.7258882068452381,
+    "median": -0.4921875,
+    "std": 1.7337521513597742,
+    "prompt": "a sketch drawing of a flower",
+    "threshold": -0.4921875,
+    "kept": 168,
+    "dropped": 168
+  },
+  "house": {
+    "count": 144,
+    "min": -6.9765625,
+    "max": 3.109375,
+    "mean": 0.30712890625,
+    "median": 0.640625,
+    "std": 1.4368076500012608,
+    "prompt": "a sketch drawing of a house",
+    "threshold": 0.640625,
+    "kept": 73,
+    "dropped": 71
+  },
+  "bird": {
+    "count": 306,
+    "min": -12.375,
+    "max": 2.984375,
+    "mean": -1.3179125816993464,
+    "median": -0.828125,
+    "std": 2.5888302666261267,
+    "prompt": "a sketch drawing of a bird",
+    "threshold": -0.828125,
+    "kept": 154,
+    "dropped": 152
+  },
+  "apple": {
+    "count": 181,
+    "min": -4.890625,
+    "max": 6.015625,
+    "mean": 2.359504488950276,
+    "median": 2.546875,
+    "std": 1.8805270523232929,
+    "prompt": "a sketch drawing of a apple",
+    "threshold": 2.546875,
+    "kept": 91,
+    "dropped": 90
+  },
+  "bicycle": {
+    "count": 343,
+    "min": -9.15625,
+    "max": 4.90625,
+    "mean": 0.5987381559766763,
+    "median": 1.234375,
+    "std": 2.6876598038856545,
+    "prompt": "a sketch drawing of a bicycle",
+    "threshold": 1.234375,
+    "kept": 174,
+    "dropped": 169
+  },
+  "face": {
+    "count": 452,
+    "min": -12.546875,
+    "max": 1.765625,
+    "mean": -2.3753975387168142,
+    "median": -2.11328125,
+    "std": 2.105306573792552,
+    "prompt": "a sketch drawing of a face",
+    "threshold": -2.11328125,
+    "kept": 226,
+    "dropped": 226
+  },
+  "tree": {
+    "count": 555,
+    "min": -17.953125,
+    "max": 3.234375,
+    "mean": -1.1969313063063063,
+    "median": -0.5625,
+    "std": 2.870508840669293,
+    "prompt": "a sketch drawing of a tree",
+    "threshold": -0.5625,
+    "kept": 280,
+    "dropped": 275
+  },
+  "fish": {
+    "count": 373,
+    "min": -11.609375,
+    "max": 3.6875,
+    "mean": -0.46456099195710454,
+    "median": 0.09375,
+    "std": 2.514214611889845,
+    "prompt": "a sketch drawing of a fish",
+    "threshold": 0.09375,
+    "kept": 187,
+    "dropped": 186
+  }
+}

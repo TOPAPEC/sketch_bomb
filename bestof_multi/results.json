@@ -1,0 +1,3026 @@
+[
+  {
+    "tag": "SD15_bo4_single",
+    "model": "SD15",
+    "best_of": 4,
+    "selector": "single",
+    "avg_siglip2": 0.02099609375,
+    "kimi_avg": 8.575,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 1.578125,
+        "multi_axes": {
+          "prompt_match": 1.578125,
+          "no_artifacts": -5.8359375,
+          "sharpness": -7.421875,
+          "anatomy": -5.109375,
+          "composition": -1.328125,
+          "colors": -5.1171875,
+          "professional": -7.5390625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect render of a classic red apple with clean background and professional lighting"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.0625,
+        "multi_axes": {
+          "prompt_match": 2.0625,
+          "no_artifacts": -6.078125,
+          "sharpness": -7.1328125,
+          "anatomy": -4.640625,
+          "composition": -2.0078125,
+          "colors": -4.59375,
+          "professional": -8.1875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect render, pristine condition"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 2.203125,
+        "multi_axes": {
+          "prompt_match": 2.203125,
+          "no_artifacts": -6.9609375,
+          "sharpness": -7.3203125,
+          "anatomy": -5.5,
+          "composition": -3.0,
+          "colors": -5.109375,
+          "professional": -8.6953125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect render of a red apple with leaves; no visible artifacts, clean separation from neutral background, professional quality"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 1.46875,
+        "multi_axes": {
+          "prompt_match": 1.46875,
+          "no_artifacts": -5.6171875,
+          "sharpness": -7.1015625,
+          "anatomy": -4.375,
+          "composition": -2.6953125,
+          "colors": -5.0,
+          "professional": -8.2734375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect render of stylized apple with clean separation from neutral background"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": 0.15625,
+        "multi_axes": {
+          "prompt_match": 0.15625,
+          "no_artifacts": -5.34375,
+          "sharpness": -5.765625,
+          "anatomy": -7.4765625,
+          "composition": -3.3984375,
+          "colors": -6.5390625,
+          "professional": -11.453125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High quality render with clean details"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": 0.171875,
+        "multi_axes": {
+          "prompt_match": 0.171875,
+          "no_artifacts": -4.8828125,
+          "sharpness": -4.6875,
+          "anatomy": -7.28125,
+          "composition": -1.7109375,
+          "colors": -6.4609375,
+          "professional": -11.328125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Excellent photorealistic feline portrait with sharp details, natural fur texture, and clean separable background"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": 0.390625,
+        "multi_axes": {
+          "prompt_match": 0.390625,
+          "no_artifacts": -5.078125,
+          "sharpness": -5.1640625,
+          "anatomy": -7.9765625,
+          "composition": -3.125,
+          "colors": -6.453125,
+          "professional": -11.421875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 8,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.4,
+          "note": "Minor facial proportion artifacts (uncanny valley) but clean render with simple separable background"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": 1.265625,
+        "multi_axes": {
+          "prompt_match": 1.265625,
+          "no_artifacts": -7.2265625,
+          "sharpness": -9.828125,
+          "anatomy": -9.53125,
+          "composition": 0.796875,
+          "colors": -10.328125,
+          "professional": -10.796875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean stylized 3D render with crisp edges against simple gradient background, instantly recognizable house with no visible defects"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": 0.40625,
+        "multi_axes": {
+          "prompt_match": 0.40625,
+          "no_artifacts": -5.953125,
+          "sharpness": -8.890625,
+          "anatomy": -7.9375,
+          "composition": 0.34375,
+          "colors": -8.671875,
+          "professional": -11.25
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean 3D render of a house with sharp edges, no artifacts, and excellent separation from gradient background."
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": 0.609375,
+        "multi_axes": {
+          "prompt_match": 0.609375,
+          "no_artifacts": -8.0390625,
+          "sharpness": -10.71875,
+          "anatomy": -9.6640625,
+          "composition": -0.109375,
+          "colors": -12.0234375,
+          "professional": -11.140625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean stylized 3D render with excellent separation from solid background"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.453125,
+        "multi_axes": {
+          "prompt_match": -0.453125,
+          "no_artifacts": -9.140625,
+          "sharpness": -8.953125,
+          "anatomy": -7.25,
+          "composition": -5.3984375,
+          "colors": -9.53125,
+          "professional": -14.28125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -1.953125,
+        "multi_axes": {
+          "prompt_match": -1.953125,
+          "no_artifacts": -9.3671875,
+          "sharpness": -9.4765625,
+          "anatomy": -5.3515625,
+          "composition": -6.6015625,
+          "colors": -8.1640625,
+          "professional": -15.1484375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -0.984375,
+        "multi_axes": {
+          "prompt_match": -0.984375,
+          "no_artifacts": -8.484375,
+          "sharpness": -8.4765625,
+          "anatomy": -4.2578125,
+          "composition": -5.3671875,
+          "colors": -7.296875,
+          "professional": -13.3984375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "Minor foot/claw ambiguity; otherwise pristine with excellent detail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -2.234375,
+        "multi_axes": {
+          "prompt_match": -2.234375,
+          "no_artifacts": -9.0390625,
+          "sharpness": -11.578125,
+          "anatomy": -8.3828125,
+          "composition": -2.0625,
+          "colors": -12.34375,
+          "professional": -6.640625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Professional product-style render of a modern road bike with clean lines, uniform background, and no visible distortions"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": -2.0625,
+        "multi_axes": {
+          "prompt_match": -2.0625,
+          "no_artifacts": -7.3359375,
+          "sharpness": -11.1875,
+          "anatomy": -6.015625,
+          "composition": -3.4140625,
+          "colors": -9.3828125,
+          "professional": -5.9765625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 6,
+          "concept_clarity": 9,
+          "bg_separability": 10,
+          "cleanliness": 7,
+          "avg": 8.4,
+          "note": "Ghostly/melted saddlebag and distorted handlebar elements; main bike structure is coherent"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -2.2890625,
+        "multi_axes": {
+          "prompt_match": -2.2890625,
+          "no_artifacts": -9.0,
+          "sharpness": -12.578125,
+          "anatomy": -7.484375,
+          "composition": -4.8125,
+          "colors": -12.1328125,
+          "professional": -8.4765625
+        },
+        "kimi": {
+          "prompt_match": 9,
+          "artifacts": 10,
+          "concept_clarity": 9,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 9.6,
+          "note": "Stylized conceptual bicycle with solid disc wheels; clean 3D render on neutral gray background allows easy subject isolation"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SD15_bo4_multi",
+    "model": "SD15",
+    "best_of": 4,
+    "selector": "multi",
+    "avg_siglip2": -0.47705078125,
+    "kimi_avg": 6.074999999999999,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 1.28125,
+        "multi_axes": {
+          "prompt_match": 1.28125,
+          "no_artifacts": -4.46875,
+          "sharpness": -6.234375,
+          "anatomy": -4.1484375,
+          "composition": -0.84375,
+          "colors": -4.75,
+          "professional": -6.46875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Photorealistic studio shot with perfect lighting and clean separable background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.0625,
+        "multi_axes": {
+          "prompt_match": 2.0625,
+          "no_artifacts": -6.078125,
+          "sharpness": -7.1328125,
+          "anatomy": -4.640625,
+          "composition": -2.0078125,
+          "colors": -4.59375,
+          "professional": -8.1875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Photorealistic red apple with perfect detail, smooth gradient background ideal for masking, and no visible artifacts"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 1.578125,
+        "multi_axes": {
+          "prompt_match": 1.578125,
+          "no_artifacts": -5.5078125,
+          "sharpness": -6.828125,
+          "anatomy": -4.0703125,
+          "composition": -1.4453125,
+          "colors": -3.5078125,
+          "professional": -7.2734375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect photorealistic render with excellent detail and clean background separation"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 1.0625,
+        "multi_axes": {
+          "prompt_match": 1.0625,
+          "no_artifacts": -4.4140625,
+          "sharpness": -5.5078125,
+          "anatomy": -5.109375,
+          "composition": -1.8046875,
+          "colors": -7.0859375,
+          "professional": -8.109375
+        },
+        "kimi": {
+          "prompt_match": 8,
+          "artifacts": 10,
+          "concept_clarity": 9,
+          "bg_separability": 8,
+          "cleanliness": 9,
+          "avg": 8.8,
+          "note": "High quality render with surreal mechanical element embedded in apple; clean execution"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": 0.15625,
+        "multi_axes": {
+          "prompt_match": 0.15625,
+          "no_artifacts": -5.34375,
+          "sharpness": -5.765625,
+          "anatomy": -7.4765625,
+          "composition": -3.3984375,
+          "colors": -6.5390625,
+          "professional": -11.453125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality render with excellent detail, clean edges, and no visible artifacts"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": 0.171875,
+        "multi_axes": {
+          "prompt_match": 0.171875,
+          "no_artifacts": -4.8828125,
+          "sharpness": -4.6875,
+          "anatomy": -7.28125,
+          "composition": -1.7109375,
+          "colors": -6.4609375,
+          "professional": -11.328125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality render with sharp fur detail, proper anatomy, and clean separation from neutral background."
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": 0.390625,
+        "multi_axes": {
+          "prompt_match": 0.390625,
+          "no_artifacts": -5.078125,
+          "sharpness": -5.1640625,
+          "anatomy": -7.9765625,
+          "composition": -3.125,
+          "colors": -6.453125,
+          "professional": -11.421875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 8,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 9,
+          "avg": 9.2,
+          "note": "Minor whisker irregularities and slightly painterly fur texture, otherwise excellent quality"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": -1.5703125,
+        "multi_axes": {
+          "prompt_match": -1.5703125,
+          "no_artifacts": -5.3125,
+          "sharpness": -8.3984375,
+          "anatomy": -9.875,
+          "composition": -0.734375,
+          "colors": -7.9296875,
+          "professional": -8.765625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": 0.40625,
+        "multi_axes": {
+          "prompt_match": 0.40625,
+          "no_artifacts": -5.953125,
+          "sharpness": -8.890625,
+          "anatomy": -7.9375,
+          "composition": 0.34375,
+          "colors": -8.671875,
+          "professional": -11.25
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": -2.3984375,
+        "multi_axes": {
+          "prompt_match": -2.3984375,
+          "no_artifacts": -4.7578125,
+          "sharpness": -8.6328125,
+          "anatomy": -7.265625,
+          "composition": -2.5078125,
+          "colors": -9.375,
+          "professional": -9.5390625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.671875,
+        "multi_axes": {
+          "prompt_match": -0.671875,
+          "no_artifacts": -8.515625,
+          "sharpness": -7.53125,
+          "anatomy": -5.1953125,
+          "composition": -5.0,
+          "colors": -7.578125,
+          "professional": -13.7890625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -2.21875,
+        "multi_axes": {
+          "prompt_match": -2.21875,
+          "no_artifacts": -7.71875,
+          "sharpness": -7.75,
+          "anatomy": -4.8359375,
+          "composition": -6.140625,
+          "colors": -6.515625,
+          "professional": -12.9921875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -0.984375,
+        "multi_axes": {
+          "prompt_match": -0.984375,
+          "no_artifacts": -8.484375,
+          "sharpness": -8.4765625,
+          "anatomy": -4.2578125,
+          "composition": -5.3671875,
+          "colors": -7.296875,
+          "professional": -13.3984375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Excellent quality, clean edges, solid background, anatomically correct with no visible artifacts"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -2.234375,
+        "multi_axes": {
+          "prompt_match": -2.234375,
+          "no_artifacts": -9.0390625,
+          "sharpness": -11.578125,
+          "anatomy": -8.3828125,
+          "composition": -2.0625,
+          "colors": -12.34375,
+          "professional": -6.640625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.6,
+          "note": "Clean render of a road bike; minor spoke/hub softness on front wheel"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": -2.0625,
+        "multi_axes": {
+          "prompt_match": -2.0625,
+          "no_artifacts": -7.3359375,
+          "sharpness": -11.1875,
+          "anatomy": -6.015625,
+          "composition": -3.4140625,
+          "colors": -9.3828125,
+          "professional": -5.9765625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -2.6015625,
+        "multi_axes": {
+          "prompt_match": -2.6015625,
+          "no_artifacts": -9.4140625,
+          "sharpness": -12.140625,
+          "anatomy": -5.75,
+          "composition": -5.5546875,
+          "colors": -11.875,
+          "professional": -7.8203125
+        },
+        "kimi": {
+          "prompt_match": 9,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 9.6,
+          "note": "Futuristic concept bicycle with disc wheels, clean 3D render on neutral gray background, no visible AI artifacts"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SD15_bo8_single",
+    "model": "SD15",
+    "best_of": 8,
+    "selector": "single",
+    "avg_siglip2": 0.365234375,
+    "kimi_avg": 4.9,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 1.578125,
+        "multi_axes": {
+          "prompt_match": 1.578125,
+          "no_artifacts": -5.734375,
+          "sharpness": -7.40625,
+          "anatomy": -5.046875,
+          "composition": -1.3828125,
+          "colors": -5.09375,
+          "professional": -7.484375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "Excellent quality render with clean background separation; minor stylization on stem tip"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.890625,
+        "multi_axes": {
+          "prompt_match": 2.890625,
+          "no_artifacts": -5.8828125,
+          "sharpness": -5.28125,
+          "anatomy": -6.0234375,
+          "composition": -1.5859375,
+          "colors": -4.03125,
+          "professional": -7.15625
+        },
+        "kimi": {
+          "prompt_match": 9,
+          "artifacts": 8,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 9,
+          "avg": 9.0,
+          "note": "Slightly synthetic/waxy skin texture and subtle leaf attachment oddities, otherwise excellent clarity"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 2.078125,
+        "multi_axes": {
+          "prompt_match": 2.078125,
+          "no_artifacts": -5.1484375,
+          "sharpness": -5.703125,
+          "anatomy": -4.984375,
+          "composition": -1.4375,
+          "colors": -3.84375,
+          "professional": -7.140625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect studio-quality render with crisp edges, natural texture, and clean gradient background ideal for masking"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 1.46875,
+        "multi_axes": {
+          "prompt_match": 1.46875,
+          "no_artifacts": -5.6171875,
+          "sharpness": -7.140625,
+          "anatomy": -4.359375,
+          "composition": -2.7421875,
+          "colors": -5.109375,
+          "professional": -8.3125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.8,
+          "note": "High-quality stylized render with excellent clarity and clean background separation"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": 0.53125,
+        "multi_axes": {
+          "prompt_match": 0.53125,
+          "no_artifacts": -6.296875,
+          "sharpness": -6.0234375,
+          "anatomy": -9.3046875,
+          "composition": -4.0546875,
+          "colors": -6.578125,
+          "professional": -12.0859375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "Excellent quality render with crisp fur detail and clean composition; background blur aids separation though not absolute"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": 0.21875,
+        "multi_axes": {
+          "prompt_match": 0.21875,
+          "no_artifacts": -4.921875,
+          "sharpness": -4.671875,
+          "anatomy": -7.34375,
+          "composition": -1.7109375,
+          "colors": -6.4765625,
+          "professional": -11.375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Excellent quality, anatomically correct, clean edges, professional rendering"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": 0.703125,
+        "multi_axes": {
+          "prompt_match": 0.703125,
+          "no_artifacts": -5.3515625,
+          "sharpness": -5.4375,
+          "anatomy": -9.0859375,
+          "composition": -2.65625,
+          "colors": -7.15625,
+          "professional": -11.484375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": 1.15625,
+        "multi_axes": {
+          "prompt_match": 1.15625,
+          "no_artifacts": -7.21875,
+          "sharpness": -10.0,
+          "anatomy": -9.3125,
+          "composition": 0.578125,
+          "colors": -10.40625,
+          "professional": -10.890625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": 0.046875,
+        "multi_axes": {
+          "prompt_match": 0.046875,
+          "no_artifacts": -5.7578125,
+          "sharpness": -8.421875,
+          "anatomy": -7.7890625,
+          "composition": -0.59375,
+          "colors": -9.1484375,
+          "professional": -11.828125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": 0.96875,
+        "multi_axes": {
+          "prompt_match": 0.96875,
+          "no_artifacts": -7.6875,
+          "sharpness": -10.25,
+          "anatomy": -9.625,
+          "composition": -0.046875,
+          "colors": -11.8125,
+          "professional": -11.0859375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.234375,
+        "multi_axes": {
+          "prompt_match": -0.234375,
+          "no_artifacts": -9.0234375,
+          "sharpness": -8.6875,
+          "anatomy": -7.4375,
+          "composition": -5.328125,
+          "colors": -9.4296875,
+          "professional": -14.078125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -0.765625,
+        "multi_axes": {
+          "prompt_match": -0.765625,
+          "no_artifacts": -8.984375,
+          "sharpness": -7.671875,
+          "anatomy": -5.421875,
+          "composition": -6.3515625,
+          "colors": -8.1953125,
+          "professional": -14.171875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -0.984375,
+        "multi_axes": {
+          "prompt_match": -0.984375,
+          "no_artifacts": -8.421875,
+          "sharpness": -7.875,
+          "anatomy": -5.578125,
+          "composition": -5.6484375,
+          "colors": -8.15625,
+          "professional": -14.578125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Excellent quality render with crisp details, proper anatomy, and solid background ideal for extraction"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -0.9296875,
+        "multi_axes": {
+          "prompt_match": -0.9296875,
+          "no_artifacts": -7.8125,
+          "sharpness": -11.3515625,
+          "anatomy": -7.09375,
+          "composition": -0.84375,
+          "colors": -9.96875,
+          "professional": -5.734375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Exceptionally clean render with perfect geometry, no visible AI artifacts, and professional studio lighting against a neutral background."
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": -0.484375,
+        "multi_axes": {
+          "prompt_match": -0.484375,
+          "no_artifacts": -7.1875,
+          "sharpness": -10.921875,
+          "anatomy": -5.2578125,
+          "composition": -2.0625,
+          "colors": -9.5625,
+          "professional": -6.6796875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -2.3984375,
+        "multi_axes": {
+          "prompt_match": -2.3984375,
+          "no_artifacts": -9.078125,
+          "sharpness": -11.96875,
+          "anatomy": -5.4921875,
+          "composition": -5.28125,
+          "colors": -11.546875,
+          "professional": -7.5390625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SD15_bo8_multi",
+    "model": "SD15",
+    "best_of": 8,
+    "selector": "multi",
+    "avg_siglip2": -0.23388671875,
+    "kimi_avg": 5.5375,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 1.28125,
+        "multi_axes": {
+          "prompt_match": 1.28125,
+          "no_artifacts": -4.5,
+          "sharpness": -6.2734375,
+          "anatomy": -4.203125,
+          "composition": -0.75,
+          "colors": -4.7109375,
+          "professional": -6.5234375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect studio-quality apple with clean edges and solid background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.890625,
+        "multi_axes": {
+          "prompt_match": 2.890625,
+          "no_artifacts": -5.8828125,
+          "sharpness": -5.28125,
+          "anatomy": -6.0234375,
+          "composition": -1.5859375,
+          "colors": -4.03125,
+          "professional": -7.15625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "Photorealistic red apple with leaves, excellent detail and lighting, minor secondary apple in background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 2.078125,
+        "multi_axes": {
+          "prompt_match": 2.078125,
+          "no_artifacts": -5.1484375,
+          "sharpness": -5.703125,
+          "anatomy": -4.984375,
+          "composition": -1.4375,
+          "colors": -3.84375,
+          "professional": -7.140625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect studio-quality render with clean edges and professional lighting"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 0.96875,
+        "multi_axes": {
+          "prompt_match": 0.96875,
+          "no_artifacts": -4.3984375,
+          "sharpness": -5.515625,
+          "anatomy": -5.078125,
+          "composition": -1.75,
+          "colors": -7.1171875,
+          "professional": -7.9765625
+        },
+        "kimi": {
+          "prompt_match": 8,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 8,
+          "cleanliness": 9,
+          "avg": 8.8,
+          "note": "Surreal apple with central aperture/hole; clean professional render despite anatomical modification"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": 0.109375,
+        "multi_axes": {
+          "prompt_match": 0.109375,
+          "no_artifacts": -5.3671875,
+          "sharpness": -5.796875,
+          "anatomy": -7.3359375,
+          "composition": -3.5703125,
+          "colors": -6.4765625,
+          "professional": -11.484375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality digital painting of a tuxedo cat with crisp details, no visible artifacts, and clean background separation"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": 0.21875,
+        "multi_axes": {
+          "prompt_match": 0.21875,
+          "no_artifacts": -4.921875,
+          "sharpness": -4.671875,
+          "anatomy": -7.34375,
+          "composition": -1.7109375,
+          "colors": -6.4765625,
+          "professional": -11.375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality cat portrait with crisp fur detail, natural eyes, and clean uniform background"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": 0.109375,
+        "multi_axes": {
+          "prompt_match": 0.109375,
+          "no_artifacts": -4.7890625,
+          "sharpness": -5.2265625,
+          "anatomy": -7.5390625,
+          "composition": -2.53125,
+          "colors": -6.4921875,
+          "professional": -11.1875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality render of a tuxedo cat with excellent detail, clean edges, and no visible artifacts."
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": -1.546875,
+        "multi_axes": {
+          "prompt_match": -1.546875,
+          "no_artifacts": -5.203125,
+          "sharpness": -8.3671875,
+          "anatomy": -9.75,
+          "composition": -0.65625,
+          "colors": -7.8828125,
+          "professional": -8.765625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": 0.046875,
+        "multi_axes": {
+          "prompt_match": 0.046875,
+          "no_artifacts": -5.7578125,
+          "sharpness": -8.421875,
+          "anatomy": -7.7890625,
+          "composition": -0.59375,
+          "colors": -9.1484375,
+          "professional": -11.828125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": -1.5703125,
+        "multi_axes": {
+          "prompt_match": -1.5703125,
+          "no_artifacts": -5.8984375,
+          "sharpness": -9.1484375,
+          "anatomy": -6.640625,
+          "composition": 0.15625,
+          "colors": -8.6875,
+          "professional": -9.71875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.59375,
+        "multi_axes": {
+          "prompt_match": -0.59375,
+          "no_artifacts": -8.6953125,
+          "sharpness": -7.578125,
+          "anatomy": -5.2109375,
+          "composition": -4.9140625,
+          "colors": -7.7734375,
+          "professional": -13.8359375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Excellent photorealistic illustration with crisp feather details, clean background, and perfect anatomy"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -2.3515625,
+        "multi_axes": {
+          "prompt_match": -2.3515625,
+          "no_artifacts": -7.75,
+          "sharpness": -7.875,
+          "anatomy": -4.8515625,
+          "composition": -6.1328125,
+          "colors": -6.546875,
+          "professional": -12.84375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -0.984375,
+        "multi_axes": {
+          "prompt_match": -0.984375,
+          "no_artifacts": -8.421875,
+          "sharpness": -7.875,
+          "anatomy": -5.578125,
+          "composition": -5.6484375,
+          "colors": -8.15625,
+          "professional": -14.578125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -0.9296875,
+        "multi_axes": {
+          "prompt_match": -0.9296875,
+          "no_artifacts": -7.8125,
+          "sharpness": -11.3515625,
+          "anatomy": -7.09375,
+          "composition": -0.84375,
+          "colors": -9.96875,
+          "professional": -5.734375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean studio render with perfect geometry, no artifacts, and excellent subject isolation"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": -0.484375,
+        "multi_axes": {
+          "prompt_match": -0.484375,
+          "no_artifacts": -7.1875,
+          "sharpness": -10.921875,
+          "anatomy": -5.2578125,
+          "composition": -2.0625,
+          "colors": -9.5625,
+          "professional": -6.6796875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -2.984375,
+        "multi_axes": {
+          "prompt_match": -2.984375,
+          "no_artifacts": -7.6484375,
+          "sharpness": -11.515625,
+          "anatomy": -6.46875,
+          "composition": -2.7578125,
+          "colors": -11.0234375,
+          "professional": -6.59375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SDXL_bo4_single",
+    "model": "SDXL",
+    "best_of": 4,
+    "selector": "single",
+    "avg_siglip2": 0.55029296875,
+    "kimi_avg": 3.0999999999999996,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 2.71875,
+        "multi_axes": {
+          "prompt_match": 2.71875,
+          "no_artifacts": -7.3828125,
+          "sharpness": -7.125,
+          "anatomy": -6.5234375,
+          "composition": -2.34375,
+          "colors": -5.1640625,
+          "professional": -10.21875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean digital illustration with smooth gradients and solid background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.484375,
+        "multi_axes": {
+          "prompt_match": 2.484375,
+          "no_artifacts": -6.984375,
+          "sharpness": -5.921875,
+          "anatomy": -7.5625,
+          "composition": -2.7109375,
+          "colors": -5.3828125,
+          "professional": -9.859375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.8,
+          "note": "Clean digital painting style, solid background, no artifacts, instantly recognizable subject"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 2.78125,
+        "multi_axes": {
+          "prompt_match": 2.78125,
+          "no_artifacts": -6.4140625,
+          "sharpness": -5.5,
+          "anatomy": -7.9453125,
+          "composition": -2.71875,
+          "colors": -4.7734375,
+          "professional": -8.3984375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean digital illustration with professional polish and clear subject definition"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 2.59375,
+        "multi_axes": {
+          "prompt_match": 2.59375,
+          "no_artifacts": -5.90625,
+          "sharpness": -6.1171875,
+          "anatomy": -6.3046875,
+          "composition": -1.890625,
+          "colors": -5.15625,
+          "professional": -8.3359375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Flawless photorealistic apple with perfect form, clean edges, and ideal background separation"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": -0.71875,
+        "multi_axes": {
+          "prompt_match": -0.71875,
+          "no_artifacts": -4.359375,
+          "sharpness": -4.5,
+          "anatomy": -6.96875,
+          "composition": -4.0390625,
+          "colors": -5.7109375,
+          "professional": -11.0
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": -0.265625,
+        "multi_axes": {
+          "prompt_match": -0.265625,
+          "no_artifacts": -5.6328125,
+          "sharpness": -4.03125,
+          "anatomy": -8.59375,
+          "composition": -5.03125,
+          "colors": -5.5859375,
+          "professional": -11.828125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": -0.046875,
+        "multi_axes": {
+          "prompt_match": -0.046875,
+          "no_artifacts": -5.6640625,
+          "sharpness": -4.984375,
+          "anatomy": -7.515625,
+          "composition": -4.59375,
+          "colors": -5.53125,
+          "professional": -12.0390625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "High-quality portrait with excellent detail, natural fur texture, and clean composition"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": -0.015625,
+        "multi_axes": {
+          "prompt_match": -0.015625,
+          "no_artifacts": -5.703125,
+          "sharpness": -7.7578125,
+          "anatomy": -8.703125,
+          "composition": 3.65625,
+          "colors": -11.109375,
+          "professional": -10.90625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": 0.109375,
+        "multi_axes": {
+          "prompt_match": 0.109375,
+          "no_artifacts": -8.2578125,
+          "sharpness": -9.6015625,
+          "anatomy": -8.2109375,
+          "composition": -4.4609375,
+          "colors": -8.2734375,
+          "professional": -12.7734375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": 1.359375,
+        "multi_axes": {
+          "prompt_match": 1.359375,
+          "no_artifacts": -7.359375,
+          "sharpness": -8.734375,
+          "anatomy": -7.625,
+          "composition": -3.125,
+          "colors": -6.65625,
+          "professional": -12.1875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.9140625,
+        "multi_axes": {
+          "prompt_match": -0.9140625,
+          "no_artifacts": -7.4375,
+          "sharpness": -5.5234375,
+          "anatomy": -5.8828125,
+          "composition": -5.0234375,
+          "colors": -5.40625,
+          "professional": -11.875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -0.6875,
+        "multi_axes": {
+          "prompt_match": -0.6875,
+          "no_artifacts": -8.5546875,
+          "sharpness": -7.5546875,
+          "anatomy": -5.15625,
+          "composition": -5.9140625,
+          "colors": -6.2578125,
+          "professional": -14.03125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -1.2421875,
+        "multi_axes": {
+          "prompt_match": -1.2421875,
+          "no_artifacts": -8.5,
+          "sharpness": -7.65625,
+          "anatomy": -7.5390625,
+          "composition": -6.2265625,
+          "colors": -6.8515625,
+          "professional": -13.0546875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -1.0390625,
+        "multi_axes": {
+          "prompt_match": -1.0390625,
+          "no_artifacts": -8.5,
+          "sharpness": -9.859375,
+          "anatomy": -5.2265625,
+          "composition": -5.609375,
+          "colors": -10.625,
+          "professional": -11.0546875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": 2.25,
+        "multi_axes": {
+          "prompt_match": 2.25,
+          "no_artifacts": -8.09375,
+          "sharpness": -9.4375,
+          "anatomy": -6.78125,
+          "composition": -2.4375,
+          "colors": -9.46875,
+          "professional": -9.1015625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -0.5625,
+        "multi_axes": {
+          "prompt_match": -0.5625,
+          "no_artifacts": -8.953125,
+          "sharpness": -11.0,
+          "anatomy": -4.453125,
+          "composition": -6.1796875,
+          "colors": -10.5859375,
+          "professional": -8.7109375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SDXL_bo4_multi",
+    "model": "SDXL",
+    "best_of": 4,
+    "selector": "multi",
+    "avg_siglip2": 0.39111328125,
+    "kimi_avg": 4.35,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 1.953125,
+        "multi_axes": {
+          "prompt_match": 1.953125,
+          "no_artifacts": -5.125,
+          "sharpness": -6.5078125,
+          "anatomy": -5.546875,
+          "composition": -2.953125,
+          "colors": -5.9453125,
+          "professional": -9.046875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "Clean stylized digital illustration with excellent clarity and no visible artifacts"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.484375,
+        "multi_axes": {
+          "prompt_match": 2.484375,
+          "no_artifacts": -6.984375,
+          "sharpness": -5.921875,
+          "anatomy": -7.5625,
+          "composition": -2.7109375,
+          "colors": -5.3828125,
+          "professional": -9.859375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect rendering of a classic red apple with ideal subject isolation on uniform background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 2.78125,
+        "multi_axes": {
+          "prompt_match": 2.78125,
+          "no_artifacts": -6.4140625,
+          "sharpness": -5.5,
+          "anatomy": -7.9453125,
+          "composition": -2.71875,
+          "colors": -4.7734375,
+          "professional": -8.3984375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Flawless digital painting; crisp edges, smooth gradients, no artifacts"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 2.59375,
+        "multi_axes": {
+          "prompt_match": 2.59375,
+          "no_artifacts": -5.90625,
+          "sharpness": -6.1171875,
+          "anatomy": -6.3046875,
+          "composition": -1.890625,
+          "colors": -5.15625,
+          "professional": -8.3359375
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Flawless photorealistic rendering with crisp details, uniform background, and no visible artifacts"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": -0.71875,
+        "multi_axes": {
+          "prompt_match": -0.71875,
+          "no_artifacts": -4.359375,
+          "sharpness": -4.5,
+          "anatomy": -6.96875,
+          "composition": -4.0390625,
+          "colors": -5.7109375,
+          "professional": -11.0
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": -0.265625,
+        "multi_axes": {
+          "prompt_match": -0.265625,
+          "no_artifacts": -5.6328125,
+          "sharpness": -4.03125,
+          "anatomy": -8.59375,
+          "composition": -5.03125,
+          "colors": -5.5859375,
+          "professional": -11.828125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": -0.40625,
+        "multi_axes": {
+          "prompt_match": -0.40625,
+          "no_artifacts": -5.0,
+          "sharpness": -4.4609375,
+          "anatomy": -7.2890625,
+          "composition": -4.1484375,
+          "colors": -5.6953125,
+          "professional": -11.203125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality digital painting with perfect anatomy, clean edges, and uniform background allowing easy subject isolation"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": -0.34375,
+        "multi_axes": {
+          "prompt_match": -0.34375,
+          "no_artifacts": -6.0859375,
+          "sharpness": -6.65625,
+          "anatomy": -8.015625,
+          "composition": 2.734375,
+          "colors": -8.7265625,
+          "professional": -7.9765625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean 3D render of a small house with excellent separation from plain background"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": -0.15625,
+        "multi_axes": {
+          "prompt_match": -0.15625,
+          "no_artifacts": -5.6015625,
+          "sharpness": -7.3359375,
+          "anatomy": -8.453125,
+          "composition": 1.125,
+          "colors": -8.109375,
+          "professional": -9.78125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 10,
+          "avg": 9.8,
+          "note": "Clean minimalist house render with excellent clarity and no visible artifacts; slight atmospheric haze at base affects perfect bg separation"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": 1.359375,
+        "multi_axes": {
+          "prompt_match": 1.359375,
+          "no_artifacts": -7.359375,
+          "sharpness": -8.734375,
+          "anatomy": -7.625,
+          "composition": -3.125,
+          "colors": -6.65625,
+          "professional": -12.1875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.9140625,
+        "multi_axes": {
+          "prompt_match": -0.9140625,
+          "no_artifacts": -7.4375,
+          "sharpness": -5.5234375,
+          "anatomy": -5.8828125,
+          "composition": -5.0234375,
+          "colors": -5.40625,
+          "professional": -11.875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -0.6875,
+        "multi_axes": {
+          "prompt_match": -0.6875,
+          "no_artifacts": -8.5546875,
+          "sharpness": -7.5546875,
+          "anatomy": -5.15625,
+          "composition": -5.9140625,
+          "colors": -6.2578125,
+          "professional": -14.03125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -1.2421875,
+        "multi_axes": {
+          "prompt_match": -1.2421875,
+          "no_artifacts": -8.5,
+          "sharpness": -7.65625,
+          "anatomy": -7.5390625,
+          "composition": -6.2265625,
+          "colors": -6.8515625,
+          "professional": -13.0546875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -1.0390625,
+        "multi_axes": {
+          "prompt_match": -1.0390625,
+          "no_artifacts": -8.5,
+          "sharpness": -9.859375,
+          "anatomy": -5.2265625,
+          "composition": -5.609375,
+          "colors": -10.625,
+          "professional": -11.0546875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": 2.25,
+        "multi_axes": {
+          "prompt_match": 2.25,
+          "no_artifacts": -8.09375,
+          "sharpness": -9.4375,
+          "anatomy": -6.78125,
+          "composition": -2.4375,
+          "colors": -9.46875,
+          "professional": -9.1015625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -1.390625,
+        "multi_axes": {
+          "prompt_match": -1.390625,
+          "no_artifacts": -8.1640625,
+          "sharpness": -10.625,
+          "anatomy": -5.84375,
+          "composition": -2.9375,
+          "colors": -11.2578125,
+          "professional": -7.1953125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SDXL_bo8_single",
+    "model": "SDXL",
+    "best_of": 8,
+    "selector": "single",
+    "avg_siglip2": 0.708984375,
+    "kimi_avg": 4.8375,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 2.796875,
+        "multi_axes": {
+          "prompt_match": 2.796875,
+          "no_artifacts": -7.40625,
+          "sharpness": -7.2109375,
+          "anatomy": -6.5546875,
+          "composition": -2.296875,
+          "colors": -5.2265625,
+          "professional": -10.15625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.8,
+          "note": "Clean stylized illustration, instantly recognizable apple with distinct edges against solid background, no AI artifacts"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.5,
+        "multi_axes": {
+          "prompt_match": 2.5,
+          "no_artifacts": -7.3125,
+          "sharpness": -5.4921875,
+          "anatomy": -6.7734375,
+          "composition": -3.984375,
+          "colors": -4.828125,
+          "professional": -10.515625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean professional digital painting with excellent clarity and solid background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 3.34375,
+        "multi_axes": {
+          "prompt_match": 3.34375,
+          "no_artifacts": -7.3359375,
+          "sharpness": -6.3125,
+          "anatomy": -8.203125,
+          "composition": -2.515625,
+          "colors": -5.6796875,
+          "professional": -10.171875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 9,
+          "cleanliness": 9,
+          "avg": 9.6,
+          "note": "Classic red apple illustration with clean edges, professional painterly style, and easily separable soft background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 2.609375,
+        "multi_axes": {
+          "prompt_match": 2.609375,
+          "no_artifacts": -6.0703125,
+          "sharpness": -6.125,
+          "anatomy": -6.40625,
+          "composition": -1.9296875,
+          "colors": -5.140625,
+          "professional": -8.5546875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect classic red apple with clean separable background"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": -0.5625,
+        "multi_axes": {
+          "prompt_match": -0.5625,
+          "no_artifacts": -4.234375,
+          "sharpness": -4.5234375,
+          "anatomy": -7.046875,
+          "composition": -3.4453125,
+          "colors": -5.9609375,
+          "professional": -10.984375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": 0.390625,
+        "multi_axes": {
+          "prompt_match": 0.390625,
+          "no_artifacts": -5.453125,
+          "sharpness": -4.15625,
+          "anatomy": -7.703125,
+          "composition": -3.9609375,
+          "colors": -5.671875,
+          "professional": -12.3515625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Excellent quality render with sharp details, clean fur texture, and solid separable background"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": -0.109375,
+        "multi_axes": {
+          "prompt_match": -0.109375,
+          "no_artifacts": -5.703125,
+          "sharpness": -5.0,
+          "anatomy": -7.546875,
+          "composition": -4.6484375,
+          "colors": -5.5546875,
+          "professional": -12.1015625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": 0.203125,
+        "multi_axes": {
+          "prompt_match": 0.203125,
+          "no_artifacts": -7.46875,
+          "sharpness": -9.171875,
+          "anatomy": -8.6015625,
+          "composition": -3.2265625,
+          "colors": -7.5625,
+          "professional": -13.75
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean architectural illustration with sharp lines, proper perspective, and no visible defects"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": 0.171875,
+        "multi_axes": {
+          "prompt_match": 0.171875,
+          "no_artifacts": -5.6171875,
+          "sharpness": -7.15625,
+          "anatomy": -8.8046875,
+          "composition": 1.375,
+          "colors": -8.1953125,
+          "professional": -9.84375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": 1.484375,
+        "multi_axes": {
+          "prompt_match": 1.484375,
+          "no_artifacts": -6.75,
+          "sharpness": -8.5703125,
+          "anatomy": -7.46875,
+          "composition": -2.4609375,
+          "colors": -6.7265625,
+          "professional": -11.890625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.6875,
+        "multi_axes": {
+          "prompt_match": -0.6875,
+          "no_artifacts": -7.2734375,
+          "sharpness": -6.9140625,
+          "anatomy": -6.140625,
+          "composition": -4.4609375,
+          "colors": -6.0625,
+          "professional": -12.3203125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -0.671875,
+        "multi_axes": {
+          "prompt_match": -0.671875,
+          "no_artifacts": -8.46875,
+          "sharpness": -7.46875,
+          "anatomy": -5.1484375,
+          "composition": -5.734375,
+          "colors": -6.2421875,
+          "professional": -14.0
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -1.15625,
+        "multi_axes": {
+          "prompt_match": -1.15625,
+          "no_artifacts": -8.3671875,
+          "sharpness": -7.2890625,
+          "anatomy": -7.703125,
+          "composition": -6.015625,
+          "colors": -6.6953125,
+          "professional": -12.8046875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -0.65625,
+        "multi_axes": {
+          "prompt_match": -0.65625,
+          "no_artifacts": -8.765625,
+          "sharpness": -9.890625,
+          "anatomy": -5.859375,
+          "composition": -5.4296875,
+          "colors": -10.84375,
+          "professional": -11.1484375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": 2.25,
+        "multi_axes": {
+          "prompt_match": 2.25,
+          "no_artifacts": -8.3359375,
+          "sharpness": -9.515625,
+          "anatomy": -6.8828125,
+          "composition": -2.5078125,
+          "colors": -9.546875,
+          "professional": -9.125
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.6,
+          "note": "Clean technical illustration with solid background; minor spoke geometry inconsistencies"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -0.5625,
+        "multi_axes": {
+          "prompt_match": -0.5625,
+          "no_artifacts": -8.9765625,
+          "sharpness": -10.890625,
+          "anatomy": -4.3203125,
+          "composition": -5.7734375,
+          "colors": -9.765625,
+          "professional": -8.2578125
+        },
+        "kimi": {
+          "prompt_match": 7,
+          "artifacts": 9,
+          "concept_clarity": 8,
+          "bg_separability": 10,
+          "cleanliness": 8,
+          "avg": 8.4,
+          "note": "Technical sketch style with unusual dual-seat frame design and wireframe wheels; clean lines, no artifacts, plain background"
+        }
+      }
+    ]
+  },
+  {
+    "tag": "SDXL_bo8_multi",
+    "model": "SDXL",
+    "best_of": 8,
+    "selector": "multi",
+    "avg_siglip2": 0.06201171875,
+    "kimi_avg": 3.075,
+    "per_sample": [
+      {
+        "class": "apple",
+        "idx": 0,
+        "siglip2": 1.796875,
+        "multi_axes": {
+          "prompt_match": 1.796875,
+          "no_artifacts": -5.921875,
+          "sharpness": -5.8828125,
+          "anatomy": -5.4296875,
+          "composition": -2.75,
+          "colors": -5.875,
+          "professional": -8.3828125
+        },
+        "kimi": {
+          "prompt_match": 9,
+          "artifacts": 9,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 9.6,
+          "note": "High-quality apple with odd floating branch; technically flawless"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 1,
+        "siglip2": 2.5,
+        "multi_axes": {
+          "prompt_match": 2.5,
+          "no_artifacts": -7.3125,
+          "sharpness": -5.4921875,
+          "anatomy": -6.7734375,
+          "composition": -3.984375,
+          "colors": -4.828125,
+          "professional": -10.515625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Clean, photorealistic rendering with excellent detail and neutral background"
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 2,
+        "siglip2": 3.234375,
+        "multi_axes": {
+          "prompt_match": 3.234375,
+          "no_artifacts": -6.0390625,
+          "sharpness": -6.28125,
+          "anatomy": -6.40625,
+          "composition": -1.7890625,
+          "colors": -5.6484375,
+          "professional": -9.734375
+        },
+        "kimi": {
+          "prompt_match": 9,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 9,
+          "avg": 9.6,
+          "note": "Stylized apple with smooth, non-standard color gradient; clearly recognizable and cleanly rendered despite unusual metallic-grey hue."
+        }
+      },
+      {
+        "class": "apple",
+        "idx": 3,
+        "siglip2": 2.609375,
+        "multi_axes": {
+          "prompt_match": 2.609375,
+          "no_artifacts": -6.0703125,
+          "sharpness": -6.125,
+          "anatomy": -6.40625,
+          "composition": -1.9296875,
+          "colors": -5.140625,
+          "professional": -8.5546875
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "Perfect photorealistic apple with clean edges, uniform background, no artifacts"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 4,
+        "siglip2": -0.5625,
+        "multi_axes": {
+          "prompt_match": -0.5625,
+          "no_artifacts": -4.234375,
+          "sharpness": -4.5234375,
+          "anatomy": -7.046875,
+          "composition": -3.4453125,
+          "colors": -5.9609375,
+          "professional": -10.984375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 5,
+        "siglip2": -0.15625,
+        "multi_axes": {
+          "prompt_match": -0.15625,
+          "no_artifacts": -4.96875,
+          "sharpness": -4.7578125,
+          "anatomy": -7.109375,
+          "composition": -3.90625,
+          "colors": -5.71875,
+          "professional": -10.90625
+        },
+        "kimi": {
+          "prompt_match": 10,
+          "artifacts": 10,
+          "concept_clarity": 10,
+          "bg_separability": 10,
+          "cleanliness": 10,
+          "avg": 10.0,
+          "note": "High-quality digital painting with clean lines, proper anatomy, and solid background making separation trivial."
+        }
+      },
+      {
+        "class": "cat",
+        "idx": 6,
+        "siglip2": -0.5,
+        "multi_axes": {
+          "prompt_match": -0.5,
+          "no_artifacts": -4.984375,
+          "sharpness": -4.4609375,
+          "anatomy": -7.171875,
+          "composition": -4.2734375,
+          "colors": -5.703125,
+          "professional": -11.28125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 7,
+        "siglip2": -0.46875,
+        "multi_axes": {
+          "prompt_match": -0.46875,
+          "no_artifacts": -6.140625,
+          "sharpness": -6.9140625,
+          "anatomy": -8.0703125,
+          "composition": 2.765625,
+          "colors": -8.8203125,
+          "professional": -7.828125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 8,
+        "siglip2": -0.21875,
+        "multi_axes": {
+          "prompt_match": -0.21875,
+          "no_artifacts": -5.6171875,
+          "sharpness": -8.90625,
+          "anatomy": -6.5390625,
+          "composition": 2.140625,
+          "colors": -8.09375,
+          "professional": -8.828125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "house",
+        "idx": 9,
+        "siglip2": 1.484375,
+        "multi_axes": {
+          "prompt_match": 1.484375,
+          "no_artifacts": -6.75,
+          "sharpness": -8.5703125,
+          "anatomy": -7.46875,
+          "composition": -2.4609375,
+          "colors": -6.7265625,
+          "professional": -11.890625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 10,
+        "siglip2": -0.8203125,
+        "multi_axes": {
+          "prompt_match": -0.8203125,
+          "no_artifacts": -7.28125,
+          "sharpness": -5.34375,
+          "anatomy": -5.5078125,
+          "composition": -4.8671875,
+          "colors": -5.3046875,
+          "professional": -11.796875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 11,
+        "siglip2": -1.1171875,
+        "multi_axes": {
+          "prompt_match": -1.1171875,
+          "no_artifacts": -7.59375,
+          "sharpness": -7.046875,
+          "anatomy": -5.3203125,
+          "composition": -3.96875,
+          "colors": -6.296875,
+          "professional": -12.015625
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bird",
+        "idx": 12,
+        "siglip2": -1.15625,
+        "multi_axes": {
+          "prompt_match": -1.15625,
+          "no_artifacts": -8.3671875,
+          "sharpness": -7.2890625,
+          "anatomy": -7.703125,
+          "composition": -6.015625,
+          "colors": -6.6953125,
+          "professional": -12.8046875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 13,
+        "siglip2": -3.78125,
+        "multi_axes": {
+          "prompt_match": -3.78125,
+          "no_artifacts": -6.5859375,
+          "sharpness": -9.9375,
+          "anatomy": -4.3984375,
+          "composition": -3.625,
+          "colors": -10.8515625,
+          "professional": -7.1875
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 14,
+        "siglip2": -0.9140625,
+        "multi_axes": {
+          "prompt_match": -0.9140625,
+          "no_artifacts": -6.0703125,
+          "sharpness": -8.3984375,
+          "anatomy": -5.2578125,
+          "composition": -3.8671875,
+          "colors": -10.1875,
+          "professional": -9.8125
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      },
+      {
+        "class": "bicycle",
+        "idx": 15,
+        "siglip2": -0.9375,
+        "multi_axes": {
+          "prompt_match": -0.9375,
+          "no_artifacts": -7.9375,
+          "sharpness": -10.2421875,
+          "anatomy": -5.6640625,
+          "composition": -2.6015625,
+          "colors": -11.15625,
+          "professional": -7.234375
+        },
+        "kimi": {
+          "prompt_match": 0,
+          "artifacts": 0,
+          "concept_clarity": 0,
+          "bg_separability": 0,
+          "cleanliness": 0,
+          "avg": 0,
+          "note": "api_fail"
+        }
+      }
+    ]
+  }
+]

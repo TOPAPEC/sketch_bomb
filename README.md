@@ -1,10 +1,51 @@
 # Интеллектуальный ассистент для художников: превращение набросков в реалистичные изображения с помощью ControlNet и текстовых подсказок
 
+## Структура проекта
+
+### Скрипты (корень)
+| Файл | Назначение |
+|------|-----------|
+| `run_experiments.py` | Основной эксперимент: 6 стадий пайплайна (baseline → DomainNet → filtered → best-of-4 SigLIP/Kimi → BG removal) на SD1.5 и SDXL |
+| `run_bestof_study.py` | Best-of-N исследование: сравнение best-of-1/4/8 с single SigLIP2 отбором на обеих моделях |
+| `run_bestof_multi.py` | Multi-criteria SigLIP2: сравнение single-prompt vs 7-осевого селектора (artifacts, anatomy, sharpness и тд) |
+| `run_bo16.py` | Дополнительный прогон best-of-16 на SD1.5, single vs multi |
+| `eda_collages.py` | EDA: визуализация датасетов, сетки примеров |
+| `eda_filter_domainnet.py` | Фильтрация DomainNet по SigLIP2, анализ распределения скоров |
+
+### Пайплайн (`quick_draw/`)
+| Файл | Назначение |
+|------|-----------|
+| `v8_tailored.py` | Полный пайплайн SD1.5 + BEiT классификатор + SigLIP2 скоринг + Kimi |
+| `v9_sdxl.py` | Полный пайплайн SDXL |
+| `v1-v7_*.py` | Ранние итерации пайплайна (хронология экспериментов) |
+| `prompts.json` | Промпты и негативы для 345 классов QuickDraw |
+| `debug_siglip.py` | Тесты SigLIP2 скоринга, чувствительность к промптам |
+| `debug_kimi.py` | Тесты Kimi K2.5 API (pick_best, expert_score) |
+| `demo_beit*.py` | Демки BEiT классификатора скетчей |
+| `demo_pipeline_*.py` | End-to-end демонстрации пайплайна |
+
+### Веб-интерфейс (`webapp/`)
+| Файл | Назначение |
+|------|-----------|
+| `backend.py` | FastAPI сервер: рисование скетча → генерация изображения |
+
+### Отчёты и данные
+| Файл/папка | Назначение |
+|------------|-----------|
+| `BestOfStudy.md` | Полный отчёт: эволюция пайплайна + best-of-N + multi-criteria SigLIP2 |
+| `experiments.md` | Лог всех экспериментов с метриками (хронологический) |
+| `EDA.md` | Exploratory data analysis по датасетам |
+| `FILTERING.md` | Анализ фильтрации DomainNet |
+| `experiments_report/` | Гриды и JSON от run_experiments |
+| `bestof_study/` | Гриды и JSON от best-of-N study |
+| `bestof_multi/` | Гриды и JSON от multi-criteria study |
+| `bestof_bo16/` | Гриды и JSON от best-of-16 |
+
 ## Current Pipeline
 
-Crude sketch → SigLIP2 match to DomainNet → ControlNet + Dreamshaper 8 → Refiner → Best-of-4 selection by SigLIP2 scoring.
+Crude sketch → lineart → ControlNet + Dreamshaper 8 → Refiner → Best-of-N selection by SigLIP2 scoring.
 
-![Pipeline Demo](demonstration/pipeline_demo.png)
+![Pipeline Results](bestof_bo16/SD15_bo16_single.png)
 
 Номер темы 90
 Уровень темы pro 

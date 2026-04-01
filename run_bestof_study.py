@@ -16,7 +16,7 @@ from datetime import datetime
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 OPENROUTER_MODEL = "moonshotai/kimi-k2.5"
-OPENROUTER_KEY = "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"
+OPENROUTER_KEY = "уженевалидный)"
 
 TEST_CLASSES = ["apple", "cat", "house", "bird", "bicycle"]
 SAMPLES_PER_CLASS = {"apple": 4, "cat": 3, "house": 3, "bird": 3, "bicycle": 3}

@@ -322,6 +322,24 @@ def load_sdxl_base(device="cuda"):
     return pipe, refiner
 
 
+def load_sdxl_lightning(device="cuda"):
+    from huggingface_hub import hf_hub_download
+    print("Loading SDXL-Lightning 4-step + xinsir scribble ControlNet...")
+    cn = ControlNetModel.from_pretrained(
+        "xinsir/controlnet-scribble-sdxl-1.0", torch_dtype=torch.float16).to(device)
+    pipe = StableDiffusionXLControlNetPipeline.from_pretrained(
+        "stabilityai/stable-diffusion-xl-base-1.0", controlnet=cn,
+        torch_dtype=torch.float16, variant="fp16").to(device)
+    pipe.load_lora_weights(
+        hf_hub_download("ByteDance/SDXL-Lightning", "sdxl_lightning_4step_lora.safetensors"))
+    pipe.fuse_lora()
+    pipe.scheduler = EulerDiscreteScheduler.from_config(
+        pipe.scheduler.config, timestep_spacing="trailing")
+    pipe.set_progress_bar_config(disable=True)
+    print("SDXL-Lightning Ready")
+    return pipe, None
+
+
 def load_wai(device="cuda"):
     if not WAI_CKPT.exists():
         raise FileNotFoundError(f"WAI checkpoint not found: {WAI_CKPT}")
@@ -344,15 +362,15 @@ def load_wai(device="cuda"):
 def generate_sd15(pipe, refiner, ctrl, label, seed, device="cuda"):
     img = pipe(
         prompt=get_prompt(label), negative_prompt=get_negative_sd15(label),
-        image=ctrl, num_inference_steps=30,
+        image=ctrl, num_inference_steps=20,
         guidance_scale=7.5, controlnet_conditioning_scale=0.7,
-        control_guidance_start=0.0, control_guidance_end=0.8,
+        control_guidance_start=0.0, control_guidance_end=1.0,
         generator=torch.Generator(device=device).manual_seed(seed),
         num_images_per_prompt=1,
     ).images[0]
     img = refiner(
         prompt=get_prompt(label), negative_prompt=get_negative_sd15(label),
-        image=img, strength=0.25, num_inference_steps=15, guidance_scale=4.0,
+        image=img, strength=0.25, num_inference_steps=10, guidance_scale=4.0,
         generator=torch.Generator(device=device).manual_seed(seed),
     ).images[0]
     return img
@@ -361,16 +379,28 @@ def generate_sd15(pipe, refiner, ctrl, label, seed, device="cuda"):
 def generate_sdxl(pipe, refiner, ctrl, label, seed, device="cuda"):
     img = pipe(
         prompt=get_prompt(label), negative_prompt=get_negative_sdxl(label),
-        image=ctrl, num_inference_steps=30,
+        image=ctrl, num_inference_steps=20,
         guidance_scale=7.0, controlnet_conditioning_scale=0.5,
-        control_guidance_start=0.0, control_guidance_end=0.9,
+        control_guidance_start=0.0, control_guidance_end=1.0,
         generator=torch.Generator(device=device).manual_seed(seed),
         num_images_per_prompt=1,
     ).images[0]
     img = refiner(
         prompt=get_prompt(label), negative_prompt=get_negative_sdxl(label),
-        image=img, strength=0.25, num_inference_steps=15, guidance_scale=4.0,
+        image=img, strength=0.25, num_inference_steps=10, guidance_scale=4.0,
         generator=torch.Generator(device=device).manual_seed(seed),
+    ).images[0]
+    return img
+
+
+def generate_lightning(pipe, _refiner, ctrl, label, seed, device="cuda"):
+    img = pipe(
+        prompt=get_prompt(label), negative_prompt=get_negative_sdxl(label),
+        image=ctrl, num_inference_steps=4,
+        guidance_scale=1.5, controlnet_conditioning_scale=0.7,
+        control_guidance_end=1.0,
+        generator=torch.Generator(device=device).manual_seed(seed),
+        num_images_per_prompt=1,
     ).images[0]
     return img
 

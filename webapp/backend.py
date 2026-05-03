@@ -11,6 +11,7 @@ import traceback
 import zipfile
 import numpy as np
 import torch
+from torchvision import transforms as T
 import requests
 from PIL import Image
 from pathlib import Path
@@ -19,20 +20,44 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
+from transformers import AutoModelForImageSegmentation
 
 from v8_tailored import (
     BeitSketchClassifier, SiglipScorer, DomainNetMatcher,
-    get_prompt, get_negative, score_prompt, remove_bg,
+    get_prompt, get_negative, score_prompt,
 )
 from demo_beit_compare import (
-    load_sd15, load_sdxl_base,
-    generate_sd15, generate_sdxl,
+    load_sd15, load_sdxl_base, load_sdxl_lightning,
+    generate_sd15, generate_sdxl, generate_lightning,
     to_lineart_sd15, to_lineart_sdxl,
     zoom_to_content, KimiJudge,
 )
 
 DEVICE = "cuda"
 S = {}
+
+BIREFNET_TRANSFORM = T.Compose([
+    T.Resize((1024, 1024)),
+    T.ToTensor(),
+    T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+])
+
+
+def remove_bg_birefnet(img, bg=(255, 255, 255)):
+    """GPU-accelerated background removal using BiRefNet (33x faster than rembg)."""
+    birefnet = S["birefnet"]
+    w, h = img.size
+    inp = BIREFNET_TRANSFORM(img).unsqueeze(0).to(DEVICE, dtype=torch.float16)
+    with torch.no_grad():
+        pred = birefnet(inp)[-1].sigmoid().cpu()
+    mask = (pred[0, 0] * 255).byte().numpy()
+    mask = Image.fromarray(mask).resize((w, h), Image.BILINEAR)
+    rgba = img.copy().convert("RGBA")
+    rgba.putalpha(mask)
+    out = Image.new("RGBA", rgba.size, (*bg, 255))
+    out.paste(rgba, mask=rgba.split()[3])
+    return out.convert("RGB")
+
 
 PROJECT_ROOT = Path(__file__).parent.parent
 DOMAINNET_ROOT = PROJECT_ROOT / "data" / "domainnet" / "sketch"
@@ -133,7 +158,12 @@ async def lifespan(app):
     print("Loading models...")
     S["beit"] = BeitSketchClassifier(device=DEVICE)
     S["scorer"] = SiglipScorer(device=DEVICE)
+    S["birefnet"] = AutoModelForImageSegmentation.from_pretrained(
+        "ZhengPeng7/BiRefNet", trust_remote_code=True
+    ).to(DEVICE).half().eval()
+    print("BiRefNet loaded (GPU bg removal)")
     S["sd15_pipe"], S["sd15_refiner"] = load_sd15(DEVICE)
+    S["lightning_pipe"], _ = load_sdxl_lightning(DEVICE)
     S["sdxl_loaded"] = False
     S["dn"] = {}
     try:
@@ -141,7 +171,7 @@ async def lifespan(app):
     except ValueError:
         print("WARNING: Kimi judge not available (no OPENROUTER_API_KEY)")
         S["kimi"] = None
-    print("All models loaded. SD1.5 ready. SDXL will load on first use.")
+    print("All models loaded. SD1.5 + Lightning ready. SDXL will load on first use.")
     yield
 
 
@@ -165,7 +195,7 @@ def get_matcher(cls):
 
 class Req(BaseModel):
     image: str
-    model: str = "sd15"
+    model: str = "lightning"
     best_of: int = 4
     selector: str = "siglip"
     remove_bg: bool = True
@@ -182,7 +212,7 @@ def run_pipeline(req: Req):
     try:
         sketch = b64_img(req.image)
         seed = req.seed if req.seed >= 0 else random.randint(0, 999999)
-        model = req.model if req.model in ("sd15", "sdxl") else "sd15"
+        model = req.model if req.model in ("sd15", "sdxl", "lightning") else "lightning"
         best_of = max(1, min(req.best_of, 8))
         selector = req.selector if req.selector in ("siglip", "siglip_multi", "kimi") else "siglip"
         do_remove_bg = req.remove_bg
@@ -215,7 +245,12 @@ def run_pipeline(req: Req):
         # ── Stage 3: Generation ──
         yield sse_event({"type": "stage_start", "stage": "generate"})
 
-        if model == "sdxl":
+        if model == "lightning":
+            pipe = S["lightning_pipe"]
+            gen_fn = lambda ctrl, lbl, sd: generate_lightning(pipe, None, ctrl, lbl, sd, DEVICE)
+            lineart_fn = to_lineart_sdxl
+            ctrl_size = 1024
+        elif model == "sdxl":
             ensure_sdxl()
             pipe, refiner = S["sdxl_pipe"], S["sdxl_refiner"]
             gen_fn = lambda ctrl, lbl, sd: generate_sdxl(pipe, refiner, ctrl, lbl, sd, DEVICE)
@@ -271,7 +306,7 @@ def run_pipeline(req: Req):
         # ── Stage 5: Background removal ──
         yield sse_event({"type": "stage_start", "stage": "background"})
         if do_remove_bg:
-            final = remove_bg(candidates[pick_idx])
+            final = remove_bg_birefnet(candidates[pick_idx])
         else:
             final = candidates[pick_idx]
 
@@ -300,7 +335,7 @@ def generate(req: Req):
 
 @app.get("/api/status")
 def status():
-    models = ["sd15"]
+    models = ["sd15", "lightning"]
     if S.get("sdxl_loaded"):
         models.append("sdxl")
     kimi_ok = S.get("kimi") is not None

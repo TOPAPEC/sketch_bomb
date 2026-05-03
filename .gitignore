@@ -5,3 +5,6 @@ yolov8n.pt
 data/*
 *.safetensors
 *.pyc
+eval_results/
+test_results/
+*.lock

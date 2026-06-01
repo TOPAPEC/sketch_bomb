@@ -1,0 +1,11 @@
+{
+  "same_test_file_for_baseline_and_models": true,
+  "best_epoch_selected_on": "val_top1 (test evaluated once on best ckpt)",
+  "test_train_exact_dup": 1,
+  "val_train_exact_dup": 1,
+  "test_val_exact_dup": 0,
+  "n_test": 30000,
+  "n_test_unique": 30000,
+  "val_minus_test_gap_best": "-0.0014 (test slightly BELOW val -> no test leakage)",
+  "fair_comparison_note": "headline +29.5pp is open-set(345)vs30; apples-to-apples is BEiT restricted-30=0.8895 -> +4.4pp"
+}

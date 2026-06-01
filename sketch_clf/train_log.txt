@@ -1,0 +1,475 @@
+==================== --model vit_small_patch16_224.augreg_in21k --mode finetune --epochs 12 --bs 256 --lr 1e-3 --backbone-lr 3e-5 --run-name vit_small_finetune ====================
+epoch 1/12 loss=1.612 val_top1=0.8921 val_top3=0.9568 f1=0.8925 88.0s vram=9.3G
+epoch 2/12 loss=0.964 val_top1=0.9066 val_top3=0.9640 f1=0.9066 78.6s vram=9.3G
+epoch 3/12 loss=0.906 val_top1=0.9118 val_top3=0.9644 f1=0.9118 78.9s vram=9.3G
+epoch 4/12 loss=0.873 val_top1=0.9189 val_top3=0.9671 f1=0.9192 79.5s vram=9.3G
+epoch 5/12 loss=0.850 val_top1=0.9173 val_top3=0.9667 f1=0.9174 79.5s vram=9.3G
+epoch 6/12 loss=0.829 val_top1=0.9215 val_top3=0.9671 f1=0.9214 79.4s vram=9.3G
+epoch 7/12 loss=0.809 val_top1=0.9222 val_top3=0.9671 f1=0.9224 79.5s vram=9.3G
+epoch 8/12 loss=0.795 val_top1=0.9237 val_top3=0.9665 f1=0.9238 79.2s vram=9.3G
+epoch 9/12 loss=0.780 val_top1=0.9231 val_top3=0.9672 f1=0.9232 79.0s vram=9.3G
+epoch 10/12 loss=0.768 val_top1=0.9235 val_top3=0.9665 f1=0.9236 78.4s vram=9.3G
+epoch 11/12 loss=0.762 val_top1=0.9235 val_top3=0.9673 f1=0.9236 79.5s vram=9.3G
+epoch 12/12 loss=0.758 val_top1=0.9237 val_top3=0.9668 f1=0.9238 79.3s vram=9.3G
+TEST: {'top1': 0.9260333180427551, 'top3': 0.9670000076293945, 'top5': 0.9753999710083008, 'macro_f1': 0.9261526579263707}
+{
+  "test": {
+    "top1": 0.9260333180427551,
+    "top3": 0.9670000076293945,
+    "top5": 0.9753999710083008,
+    "macro_f1": 0.9261526579263707
+  },
+  "best_val_top1": 0.9237333536148071,
+  "train_time_sec": 959.8261954784393,
+  "worst_classes": [
+    [
+      "flying saucer",
+      0.826
+    ],
+    [
+      "pliers",
+      0.835
+    ],
+    [
+      "aircraft carrier",
+      0.847
+    ],
+    [
+      "bread",
+      0.848
+    ],
+    [
+      "steak",
+      0.87
+    ],
+    [
+      "hat",
+      0.887
+    ],
+    [
+      "asparagus",
+      0.893
+    ],
+    [
+      "arm",
+      0.914
+    ]
+  ],
+  "top_confusions": [
+    [
+      "flying saucer",
+      "hat",
+      56
+    ],
+    [
+      "hat",
+      "flying saucer",
+      52
+    ],
+    [
+      "bread",
+      "steak",
+      38
+    ],
+    [
+      "arm",
+      "hand",
+      36
+    ],
+    [
+      "steak",
+      "bread",
+      34
+    ],
+    [
+      "hand",
+      "arm",
+      33
+    ],
+    [
+      "pliers",
+      "asparagus",
+      25
+    ],
+    [
+      "flying saucer",
+      "aircraft carrier",
+      24
+    ],
+    [
+      "trumpet",
+      "aircraft carrier",
+      22
+    ],
+    [
+      "flying saucer",
+      "steak",
+      18
+    ],
+    [
+      "hat",
+      "bread",
+      18
+    ],
+    [
+      "pliers",
+      "aircraft carrier",
+      18
+    ]
+  ]
+}
+==================== --model vit_small_patch16_224.augreg_in21k --mode linear_probe --epochs 10 --bs 256 --lr 2e-3 --run-name vit_small_linearprobe ====================
+epoch 1/10 loss=1.786 val_top1=0.8341 val_top3=0.9363 f1=0.8343 42.1s vram=1.0G
+epoch 2/10 loss=1.212 val_top1=0.8503 val_top3=0.9402 f1=0.8502 34.7s vram=1.0G
+epoch 3/10 loss=1.178 val_top1=0.8584 val_top3=0.9437 f1=0.8584 34.6s vram=1.0G
+epoch 4/10 loss=1.163 val_top1=0.8600 val_top3=0.9459 f1=0.8595 34.7s vram=1.0G
+epoch 5/10 loss=1.151 val_top1=0.8617 val_top3=0.9468 f1=0.8627 35.2s vram=1.0G
+epoch 6/10 loss=1.139 val_top1=0.8653 val_top3=0.9473 f1=0.8654 34.9s vram=1.0G
+epoch 7/10 loss=1.132 val_top1=0.8686 val_top3=0.9482 f1=0.8687 35.0s vram=1.0G
+epoch 8/10 loss=1.124 val_top1=0.8703 val_top3=0.9486 f1=0.8705 35.1s vram=1.0G
+epoch 9/10 loss=1.119 val_top1=0.8705 val_top3=0.9498 f1=0.8705 35.2s vram=1.0G
+epoch 10/10 loss=1.116 val_top1=0.8705 val_top3=0.9499 f1=0.8707 35.0s vram=1.0G
+TEST: {'top1': 0.8705666661262512, 'top3': 0.94923335313797, 'top5': 0.9653000235557556, 'macro_f1': 0.8705080514472036}
+{
+  "test": {
+    "top1": 0.8705666661262512,
+    "top3": 0.94923335313797,
+    "top5": 0.9653000235557556,
+    "macro_f1": 0.8705080514472036
+  },
+  "best_val_top1": 0.8705333471298218,
+  "train_time_sec": 357.43665981292725,
+  "worst_classes": [
+    [
+      "aircraft carrier",
+      0.735
+    ],
+    [
+      "steak",
+      0.767
+    ],
+    [
+      "flying saucer",
+      0.774
+    ],
+    [
+      "pliers",
+      0.774
+    ],
+    [
+      "bread",
+      0.777
+    ],
+    [
+      "hat",
+      0.805
+    ],
+    [
+      "telephone",
+      0.806
+    ],
+    [
+      "asparagus",
+      0.824
+    ]
+  ],
+  "top_confusions": [
+    [
+      "hat",
+      "flying saucer",
+      79
+    ],
+    [
+      "bread",
+      "steak",
+      58
+    ],
+    [
+      "steak",
+      "bread",
+      53
+    ],
+    [
+      "face",
+      "cookie",
+      50
+    ],
+    [
+      "arm",
+      "hand",
+      47
+    ],
+    [
+      "flying saucer",
+      "hat",
+      46
+    ],
+    [
+      "telephone",
+      "passport",
+      45
+    ],
+    [
+      "trumpet",
+      "aircraft carrier",
+      43
+    ],
+    [
+      "flying saucer",
+      "aircraft carrier",
+      36
+    ],
+    [
+      "cookie",
+      "face",
+      32
+    ],
+    [
+      "hand",
+      "arm",
+      30
+    ],
+    [
+      "pliers",
+      "asparagus",
+      29
+    ]
+  ]
+}
+==================== --model vit_base_patch16_224.augreg_in21k --mode finetune --epochs 10 --bs 160 --lr 1e-3 --backbone-lr 2e-5 --run-name vit_base_finetune ====================
+epoch 1/10 loss=1.467 val_top1=0.9006 val_top3=0.9611 f1=0.9010 221.2s vram=12.3G
+epoch 2/10 loss=0.925 val_top1=0.9193 val_top3=0.9669 f1=0.9202 215.0s vram=12.3G
+epoch 3/10 loss=0.860 val_top1=0.9236 val_top3=0.9701 f1=0.9237 215.3s vram=12.3G
+epoch 4/10 loss=0.823 val_top1=0.9255 val_top3=0.9702 f1=0.9257 215.2s vram=12.3G
+epoch 5/10 loss=0.792 val_top1=0.9269 val_top3=0.9698 f1=0.9269 215.3s vram=12.3G
+epoch 6/10 loss=0.760 val_top1=0.9276 val_top3=0.9687 f1=0.9278 215.2s vram=12.3G
+epoch 7/10 loss=0.732 val_top1=0.9266 val_top3=0.9675 f1=0.9264 215.2s vram=12.3G
+epoch 8/10 loss=0.710 val_top1=0.9283 val_top3=0.9671 f1=0.9282 215.0s vram=12.3G
+epoch 9/10 loss=0.697 val_top1=0.9285 val_top3=0.9669 f1=0.9285 215.1s vram=12.3G
+epoch 10/10 loss=0.692 val_top1=0.9281 val_top3=0.9664 f1=0.9280 215.3s vram=12.3G
+TEST: {'top1': 0.9305999875068665, 'top3': 0.9672333598136902, 'top5': 0.9739333391189575, 'macro_f1': 0.9307164191414877}
+{
+  "test": {
+    "top1": 0.9305999875068665,
+    "top3": 0.9672333598136902,
+    "top5": 0.9739333391189575,
+    "macro_f1": 0.9307164191414877
+  },
+  "best_val_top1": 0.9284666776657104,
+  "train_time_sec": 2159.7946739196777,
+  "worst_classes": [
+    [
+      "flying saucer",
+      0.834
+    ],
+    [
+      "bread",
+      0.852
+    ],
+    [
+      "pliers",
+      0.854
+    ],
+    [
+      "aircraft carrier",
+      0.863
+    ],
+    [
+      "steak",
+      0.879
+    ],
+    [
+      "hat",
+      0.892
+    ],
+    [
+      "asparagus",
+      0.901
+    ],
+    [
+      "arm",
+      0.917
+    ]
+  ],
+  "top_confusions": [
+    [
+      "flying saucer",
+      "hat",
+      56
+    ],
+    [
+      "hat",
+      "flying saucer",
+      52
+    ],
+    [
+      "hand",
+      "arm",
+      45
+    ],
+    [
+      "steak",
+      "bread",
+      44
+    ],
+    [
+      "bread",
+      "steak",
+      40
+    ],
+    [
+      "flying saucer",
+      "aircraft carrier",
+      34
+    ],
+    [
+      "arm",
+      "hand",
+      29
+    ],
+    [
+      "steak",
+      "flying saucer",
+      20
+    ],
+    [
+      "pliers",
+      "asparagus",
+      19
+    ],
+    [
+      "passport",
+      "telephone",
+      17
+    ],
+    [
+      "asparagus",
+      "aircraft carrier",
+      16
+    ],
+    [
+      "pliers",
+      "aircraft carrier",
+      16
+    ]
+  ]
+}
+==================== --model vit_base_patch16_clip_224.openai --mode finetune --epochs 10 --bs 160 --lr 1e-3 --backbone-lr 2e-5 --run-name vit_base_clip_finetune ====================
+epoch 1/10 loss=1.268 val_top1=0.9060 val_top3=0.9637 f1=0.9065 223.3s vram=12.4G
+epoch 2/10 loss=0.908 val_top1=0.9150 val_top3=0.9660 f1=0.9152 215.6s vram=12.4G
+epoch 3/10 loss=0.852 val_top1=0.9232 val_top3=0.9689 f1=0.9236 215.4s vram=12.4G
+epoch 4/10 loss=0.814 val_top1=0.9257 val_top3=0.9685 f1=0.9258 215.7s vram=12.4G
+epoch 5/10 loss=0.775 val_top1=0.9295 val_top3=0.9695 f1=0.9296 215.6s vram=12.4G
+epoch 6/10 loss=0.740 val_top1=0.9310 val_top3=0.9689 f1=0.9311 215.8s vram=12.4G
+epoch 7/10 loss=0.709 val_top1=0.9334 val_top3=0.9695 f1=0.9335 216.0s vram=12.4G
+epoch 8/10 loss=0.687 val_top1=0.9343 val_top3=0.9688 f1=0.9344 215.9s vram=12.4G
+epoch 9/10 loss=0.676 val_top1=0.9341 val_top3=0.9687 f1=0.9341 215.6s vram=12.4G
+epoch 10/10 loss=0.671 val_top1=0.9347 val_top3=0.9685 f1=0.9347 215.1s vram=12.4G
+TEST: {'top1': 0.9332666397094727, 'top3': 0.9675333499908447, 'top5': 0.973633348941803, 'macro_f1': 0.9333488363689235}
+{
+  "test": {
+    "top1": 0.9332666397094727,
+    "top3": 0.9675333499908447,
+    "top5": 0.973633348941803,
+    "macro_f1": 0.9333488363689235
+  },
+  "best_val_top1": 0.9346666932106018,
+  "train_time_sec": 2166.5008342266083,
+  "worst_classes": [
+    [
+      "flying saucer",
+      0.844
+    ],
+    [
+      "aircraft carrier",
+      0.855
+    ],
+    [
+      "bread",
+      0.858
+    ],
+    [
+      "pliers",
+      0.867
+    ],
+    [
+      "steak",
+      0.874
+    ],
+    [
+      "hat",
+      0.894
+    ],
+    [
+      "asparagus",
+      0.901
+    ],
+    [
+      "arm",
+      0.921
+    ]
+  ],
+  "top_confusions": [
+    [
+      "flying saucer",
+      "hat",
+      51
+    ],
+    [
+      "hat",
+      "flying saucer",
+      49
+    ],
+    [
+      "hand",
+      "arm",
+      45
+    ],
+    [
+      "bread",
+      "steak",
+      41
+    ],
+    [
+      "steak",
+      "bread",
+      37
+    ],
+    [
+      "arm",
+      "hand",
+      27
+    ],
+    [
+      "flying saucer",
+      "aircraft carrier",
+      23
+    ],
+    [
+      "steak",
+      "flying saucer",
+      20
+    ],
+    [
+      "aircraft carrier",
+      "flying saucer",
+      19
+    ],
+    [
+      "trumpet",
+      "aircraft carrier",
+      17
+    ],
+    [
+      "aircraft carrier",
+      "steak",
+      15
+    ],
+    [
+      "asparagus",
+      "pliers",
+      15
+    ]
+  ]
+}
+ALL DONE

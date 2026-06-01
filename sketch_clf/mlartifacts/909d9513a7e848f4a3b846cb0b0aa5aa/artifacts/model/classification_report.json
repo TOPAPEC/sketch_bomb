@@ -1,0 +1,195 @@
+{
+  "aircraft carrier": {
+    "precision": 0.799074074074074,
+    "recall": 0.863,
+    "f1-score": 0.8298076923076924,
+    "support": 1000.0
+  },
+  "arm": {
+    "precision": 0.9052319842053307,
+    "recall": 0.917,
+    "f1-score": 0.9110779930452062,
+    "support": 1000.0
+  },
+  "asparagus": {
+    "precision": 0.901,
+    "recall": 0.901,
+    "f1-score": 0.901,
+    "support": 1000.0
+  },
+  "backpack": {
+    "precision": 0.9363992172211351,
+    "recall": 0.957,
+    "f1-score": 0.9465875370919882,
+    "support": 1000.0
+  },
+  "banana": {
+    "precision": 0.9574678536102869,
+    "recall": 0.968,
+    "f1-score": 0.9627051218299354,
+    "support": 1000.0
+  },
+  "bread": {
+    "precision": 0.8747433264887063,
+    "recall": 0.852,
+    "f1-score": 0.8632218844984803,
+    "support": 1000.0
+  },
+  "broom": {
+    "precision": 0.9292730844793713,
+    "recall": 0.946,
+    "f1-score": 0.9375619425173439,
+    "support": 1000.0
+  },
+  "butterfly": {
+    "precision": 0.978978978978979,
+    "recall": 0.978,
+    "f1-score": 0.9784892446223111,
+    "support": 1000.0
+  },
+  "camel": {
+    "precision": 0.9838220424671386,
+    "recall": 0.973,
+    "f1-score": 0.9783810960281548,
+    "support": 1000.0
+  },
+  "chair": {
+    "precision": 0.9596367305751766,
+    "recall": 0.951,
+    "f1-score": 0.9552988448016072,
+    "support": 1000.0
+  },
+  "cookie": {
+    "precision": 0.9524281466798811,
+    "recall": 0.961,
+    "f1-score": 0.9566948730711797,
+    "support": 1000.0
+  },
+  "drums": {
+    "precision": 0.9368635437881874,
+    "recall": 0.92,
+    "f1-score": 0.9283551967709385,
+    "support": 1000.0
+  },
+  "face": {
+    "precision": 0.9593253968253969,
+    "recall": 0.967,
+    "f1-score": 0.9631474103585658,
+    "support": 1000.0
+  },
+  "fan": {
+    "precision": 0.9353535353535354,
+    "recall": 0.926,
+    "f1-score": 0.9306532663316583,
+    "support": 1000.0
+  },
+  "fence": {
+    "precision": 0.9556650246305419,
+    "recall": 0.97,
+    "f1-score": 0.9627791563275434,
+    "support": 1000.0
+  },
+  "fish": {
+    "precision": 0.9772727272727273,
+    "recall": 0.946,
+    "f1-score": 0.9613821138211383,
+    "support": 1000.0
+  },
+  "flying saucer": {
+    "precision": 0.845841784989858,
+    "recall": 0.834,
+    "f1-score": 0.8398791540785498,
+    "support": 1000.0
+  },
+  "hand": {
+    "precision": 0.94655704008222,
+    "recall": 0.921,
+    "f1-score": 0.9336036492650786,
+    "support": 1000.0
+  },
+  "hat": {
+    "precision": 0.892,
+    "recall": 0.892,
+    "f1-score": 0.892,
+    "support": 1000.0
+  },
+  "parachute": {
+    "precision": 0.964,
+    "recall": 0.964,
+    "f1-score": 0.964,
+    "support": 1000.0
+  },
+  "passport": {
+    "precision": 0.937,
+    "recall": 0.937,
+    "f1-score": 0.937,
+    "support": 1000.0
+  },
+  "pliers": {
+    "precision": 0.8497512437810946,
+    "recall": 0.854,
+    "f1-score": 0.8518703241895261,
+    "support": 1000.0
+  },
+  "sea turtle": {
+    "precision": 0.962,
+    "recall": 0.962,
+    "f1-score": 0.962,
+    "support": 1000.0
+  },
+  "spider": {
+    "precision": 0.9622641509433962,
+    "recall": 0.969,
+    "f1-score": 0.9656203288490284,
+    "support": 1000.0
+  },
+  "steak": {
+    "precision": 0.8728897715988083,
+    "recall": 0.879,
+    "f1-score": 0.8759342301943199,
+    "support": 1000.0
+  },
+  "swing set": {
+    "precision": 0.9734964322120285,
+    "recall": 0.955,
+    "f1-score": 0.9641595153962645,
+    "support": 1000.0
+  },
+  "sword": {
+    "precision": 0.9539078156312625,
+    "recall": 0.952,
+    "f1-score": 0.9529529529529529,
+    "support": 1000.0
+  },
+  "telephone": {
+    "precision": 0.9306243805748265,
+    "recall": 0.939,
+    "f1-score": 0.9347934295669488,
+    "support": 1000.0
+  },
+  "trumpet": {
+    "precision": 0.9311740890688259,
+    "recall": 0.92,
+    "f1-score": 0.9255533199195171,
+    "support": 1000.0
+  },
+  "violin": {
+    "precision": 0.9662231320368475,
+    "recall": 0.944,
+    "f1-score": 0.9549822964087,
+    "support": 1000.0
+  },
+  "accuracy": 0.9306,
+  "macro avg": {
+    "precision": 0.931008850252321,
+    "recall": 0.9306000000000001,
+    "f1-score": 0.9307164191414877,
+    "support": 30000.0
+  },
+  "weighted avg": {
+    "precision": 0.9310088502523213,
+    "recall": 0.9306,
+    "f1-score": 0.9307164191414877,
+    "support": 30000.0
+  }
+}

@@ -55,6 +55,12 @@ Crude sketch → lineart → ControlNet + Dreamshaper 8 → Refiner → Best-of-
 Руководитель: 
 @jdbelg (Глеб Булыгин)
 
+## Классификатор скетчей и mlflow
+
+в папке `sketch_clf/` лежит дотюненный классификатор скетчей (vit/clip) с трекингом в mlflow.
+mlflow поднят локально на sqlite, всё внутри репы (`sketch_clf/mlflow.db`, артефакты в `mlartifacts/`), ничего внешнего не надо.
+посмотреть прогоны: `mlflow ui --backend-store-uri sqlite:///$(pwd)/sketch_clf/mlflow.db`. подробности и сравнение с бейслайном beit в `sketch_clf/REPORT.md`.
+
 ## Общий план проекта 
 Грубыми мазками делаем 2 LORA адаптера:
 1. Из грубого скетча в детальный скетч

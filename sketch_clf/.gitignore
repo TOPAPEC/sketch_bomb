@@ -1,0 +1,7 @@
+# Large raw/rendered data (regenerate with scripts/prepare_data.py)
+data/*.npy
+# Model weight blobs (kept on disk in the repo dir, too large for git)
+artifacts/**/best.pt
+mlartifacts/**/best.pt
+# Keep: mlflow.db, *.json metrics, confusion_matrix.npy, report_images/, *.md
+!data/meta.json

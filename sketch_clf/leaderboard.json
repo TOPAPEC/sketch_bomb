@@ -1,0 +1,67 @@
+[
+  {
+    "run": "vit_base_clip_finetune",
+    "model": "vit_base_patch16_clip_224.openai",
+    "mode": "finetune",
+    "test_top1": 0.9332666397094727,
+    "test_top1_restricted": NaN,
+    "test_top3": 0.9675333499908447,
+    "test_macro_f1": 0.9333488363689235,
+    "best_val_top1": 0.9346666932106018,
+    "train_time_sec": 2166.5008342266083,
+    "trainable_params": "85822494",
+    "max_vram_gb": 12.367892992
+  },
+  {
+    "run": "vit_base_finetune",
+    "model": "vit_base_patch16_224.augreg_in21k",
+    "mode": "finetune",
+    "test_top1": 0.9305999875068665,
+    "test_top1_restricted": NaN,
+    "test_top3": 0.9672333598136902,
+    "test_macro_f1": 0.9307164191414877,
+    "best_val_top1": 0.9284666776657104,
+    "train_time_sec": 2159.7946739196777,
+    "trainable_params": "85821726",
+    "max_vram_gb": 12.270801408
+  },
+  {
+    "run": "vit_small_finetune",
+    "model": "vit_small_patch16_224.augreg_in21k",
+    "mode": "finetune",
+    "test_top1": 0.9260333180427551,
+    "test_top1_restricted": NaN,
+    "test_top3": 0.9670000076293945,
+    "test_macro_f1": 0.9261526579263707,
+    "best_val_top1": 0.9237333536148071,
+    "train_time_sec": 959.8261954784393,
+    "trainable_params": "21677214",
+    "max_vram_gb": 9.29510656
+  },
+  {
+    "run": "vit_small_linearprobe",
+    "model": "vit_small_patch16_224.augreg_in21k",
+    "mode": "linear_probe",
+    "test_top1": 0.8705666661262512,
+    "test_top1_restricted": NaN,
+    "test_top3": 0.94923335313797,
+    "test_macro_f1": 0.8705080514472036,
+    "best_val_top1": 0.8705333471298218,
+    "train_time_sec": 357.43665981292725,
+    "trainable_params": "11550",
+    "max_vram_gb": 1.035254784
+  },
+  {
+    "run": "baseline_beit",
+    "model": "kmewhort/beit-sketch-classifier",
+    "mode": "pretrained_eval_only",
+    "test_top1": 0.6385,
+    "test_top1_restricted": 0.8895333333333333,
+    "test_top3": 0.8287,
+    "test_macro_f1": 0.8906819375732801,
+    "best_val_top1": NaN,
+    "train_time_sec": NaN,
+    "trainable_params": "",
+    "max_vram_gb": NaN
+  }
+]

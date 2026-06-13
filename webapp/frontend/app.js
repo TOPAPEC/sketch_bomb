@@ -66,24 +66,35 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Pipeline stage definitions ──
-const STAGES = ['classify', 'domainnet', 'generate', 'score', 'background'];
+const STAGES = ['classify', 'domainnet', 'generate', 'rembg', 'score', 'background'];
 const STAGE_LABELS = {
   classify: 'BEiT Classification',
   domainnet: 'DomainNet Matching',
   generate: 'ControlNet + Diffusion',
+  rembg: 'Background Removal',
   score: 'Scoring & Selection',
-  background: 'Background Removal',
+  background: 'Final Pick',
 };
 
 // ── Helpers ──
 function stageIndicator(stageStates) {
   let h = '<div class="progress-stages">';
   for (const s of STAGES) {
+    // Background-removal stage only applies when bg removal is enabled
+    if (s === 'rembg' && pipeState.removeBg === false) continue;
     const state = stageStates[s] || 'pending';
     h += `<div class="progress-stage ${state}"><span class="dot"></span><span>${STAGE_LABELS[s]}</span></div>`;
   }
   h += '</div>';
   return h;
+}
+
+// Render a single candidate card, optionally marking the selector's winner + score
+function candCard(b64, i, pickIdx, scores) {
+  if (!b64) return '<div class="skeleton skeleton-card"></div>';
+  const isWinner = (pickIdx !== null && pickIdx !== undefined && i === pickIdx);
+  const scoreBadge = scores ? `<span class="score-badge">${scores[i].toFixed(2)}</span>` : '';
+  return `<div class="stage${isWinner ? ' winner' : ''}">${imgTag(b64, 'cand' + i)}<div class="cap">#${i + 1}${isWinner ? ' ★' : ''}${scoreBadge}</div></div>`;
 }
 
 function imgTag(b64, alt) {
@@ -108,7 +119,8 @@ function resetPipeState() {
     predictions: null,
     dnImages: [],
     linearts: [],
-    candidates: [],
+    candidatesRaw: [],
+    candidatesNobg: [],
     pickIdx: null,
     siglipScores: null,
     selector: null,
@@ -177,22 +189,31 @@ function renderPipeState() {
     }
     h += '</div></div>';
 
-    // Candidates
     const selectorLabel = s.selector === 'kimi' ? 'Kimi' : s.selector === 'siglip_multi' ? 'SigLIP2 Multi' : 'SigLIP2';
     const pickStr = s.pickIdx !== null ? ` — ${selectorLabel} picked #${s.pickIdx + 1}` : '';
-    h += `<div class="section"><div class="section-title">Candidates${pickStr}</div><div class="grid">`;
+    // The selector scores the background-removed set when bg removal is on,
+    // otherwise it scores the raw diffusion output.
+    const rawScored = !s.removeBg;
+
+    // Stage A: raw diffusion candidates (with background)
+    h += `<div class="section"><div class="section-title">Candidates — diffusion output${rawScored ? pickStr : ''}</div><div class="grid">`;
     for (let i = 0; i < total; i++) {
-      if (s.candidates[i]) {
-        const isWinner = s.pickIdx !== null && i === s.pickIdx;
-        const scoreBadge = s.siglipScores ? `<span class="score-badge">${s.siglipScores[i].toFixed(2)}</span>` : '';
-        h += `<div class="stage${isWinner ? ' winner' : ''}">${imgTag(s.candidates[i], 'cand' + i)}<div class="cap">#${i + 1}${isWinner ? ' ★' : ''}${scoreBadge}</div></div>`;
-      } else {
-        h += '<div class="skeleton skeleton-card"></div>';
-      }
+      h += candCard(s.candidatesRaw[i], i, rawScored ? s.pickIdx : null, rawScored ? s.siglipScores : null);
     }
-    h += '</div>';
-    if (s.reason) h += `<div class="kimi-reason">${selectorLabel}: ${s.reason}</div>`;
-    h += '</div>';
+    h += '</div></div>';
+
+    // Stage B: background-removed candidates (only when bg removal is enabled)
+    if (s.removeBg && s.stageStates.rembg) {
+      h += `<div class="section"><div class="section-title">Candidates — background removed${pickStr}</div><div class="grid">`;
+      for (let i = 0; i < total; i++) {
+        h += candCard(s.candidatesNobg[i], i, s.pickIdx, s.siglipScores);
+      }
+      h += '</div>';
+      if (s.reason) h += `<div class="kimi-reason">${selectorLabel}: ${s.reason}</div>`;
+      h += '</div>';
+    } else if (rawScored && s.reason) {
+      h += `<div class="section"><div class="kimi-reason">${selectorLabel}: ${s.reason}</div></div>`;
+    }
   }
 
   // Section 4: Final
@@ -350,6 +371,7 @@ function handleSSE(evt) {
   switch (evt.type) {
     case 'config':
       s.config = evt;
+      s.removeBg = evt.remove_bg;
       break;
 
     case 'stage_start':
@@ -382,7 +404,12 @@ function handleSSE(evt) {
 
     case 'candidate':
       s.linearts[evt.index] = evt.lineart;
-      s.candidates[evt.index] = evt.image;
+      s.candidatesRaw[evt.index] = evt.image;
+      renderPipeState();
+      break;
+
+    case 'candidate_nobg':
+      s.candidatesNobg[evt.index] = evt.image;
       renderPipeState();
       break;
 

@@ -1,0 +1,201 @@
+{
+  "config": {
+    "n": 10,
+    "model": "lightning",
+    "best_of": 4,
+    "selector": "siglip",
+    "remove_bg": true,
+    "url": "http://localhost:8000",
+    "seed": null
+  },
+  "count_ok": 10,
+  "count_error": 0,
+  "total_seconds": {
+    "min": 10.687,
+    "max": 14.349,
+    "mean": 12.458,
+    "p50": 12.27,
+    "p90": 14.048,
+    "p95": 14.349
+  },
+  "stage_avg_seconds": {
+    "classify": 0.028,
+    "domainnet": 1.154,
+    "generate": 10.385,
+    "rembg": 0.71,
+    "score": 0.005,
+    "background": 0.15
+  },
+  "requests": [
+    {
+      "seq": 1,
+      "true_class": "streetlight",
+      "file": "sketch_292_000073.jpg",
+      "status": "ok",
+      "total_s": 10.687,
+      "predicted_label": "marker",
+      "siglip_score": 0.328,
+      "stages": {
+        "classify": 0.047,
+        "domainnet": 1.177,
+        "generate": 8.68,
+        "rembg": 0.637,
+        "score": 0.046,
+        "background": 0.077
+      }
+    },
+    {
+      "seq": 2,
+      "true_class": "flower",
+      "file": "sketch_122_000182.jpg",
+      "status": "ok",
+      "total_s": 11.472,
+      "predicted_label": "flower",
+      "siglip_score": -0.109,
+      "stages": {
+        "classify": 0.026,
+        "domainnet": 1.492,
+        "generate": 9.324,
+        "rembg": 0.52,
+        "score": 0.0,
+        "background": 0.091
+      }
+    },
+    {
+      "seq": 3,
+      "true_class": "blackberry",
+      "file": "sketch_034_000043.jpg",
+      "status": "ok",
+      "total_s": 14.349,
+      "predicted_label": "garden",
+      "siglip_score": -2.242,
+      "stages": {
+        "classify": 0.034,
+        "domainnet": 1.142,
+        "generate": 12.901,
+        "rembg": 0.177,
+        "score": 0.0,
+        "background": 0.023
+      }
+    },
+    {
+      "seq": 4,
+      "true_class": "stitches",
+      "file": "sketch_288_000006.jpg",
+      "status": "ok",
+      "total_s": 11.928,
+      "predicted_label": "peas",
+      "siglip_score": 3.953,
+      "stages": {
+        "classify": 0.02,
+        "domainnet": 0.506,
+        "generate": 10.858,
+        "rembg": 0.43,
+        "score": 0.0,
+        "background": 0.111
+      }
+    },
+    {
+      "seq": 5,
+      "true_class": "basket",
+      "file": "sketch_019_000007.jpg",
+      "status": "ok",
+      "total_s": 14.048,
+      "predicted_label": "basket",
+      "siglip_score": 2.797,
+      "stages": {
+        "classify": 0.027,
+        "domainnet": 0.709,
+        "generate": 11.27,
+        "rembg": 1.705,
+        "score": 0.0,
+        "background": 0.321
+      }
+    },
+    {
+      "seq": 6,
+      "true_class": "school_bus",
+      "file": "sketch_252_000363.jpg",
+      "status": "ok",
+      "total_s": 12.283,
+      "predicted_label": "The Great Wall of China",
+      "siglip_score": -6.141,
+      "stages": {
+        "classify": 0.031,
+        "domainnet": 1.026,
+        "generate": 10.781,
+        "rembg": 0.341,
+        "score": 0.0,
+        "background": 0.048
+      }
+    },
+    {
+      "seq": 7,
+      "true_class": "tree",
+      "file": "sketch_323_000466.jpg",
+      "status": "ok",
+      "total_s": 13.726,
+      "predicted_label": "bush",
+      "siglip_score": 2.594,
+      "stages": {
+        "classify": 0.02,
+        "domainnet": 2.434,
+        "generate": 9.185,
+        "rembg": 1.599,
+        "score": 0.0,
+        "background": 0.464
+      }
+    },
+    {
+      "seq": 8,
+      "true_class": "toe",
+      "file": "sketch_314_000035.jpg",
+      "status": "ok",
+      "total_s": 10.92,
+      "predicted_label": "necklace",
+      "siglip_score": 0.156,
+      "stages": {
+        "classify": 0.019,
+        "domainnet": 0.742,
+        "generate": 9.763,
+        "rembg": 0.253,
+        "score": 0.0,
+        "background": 0.138
+      }
+    },
+    {
+      "seq": 9,
+      "true_class": "pineapple",
+      "file": "sketch_225_000009.jpg",
+      "status": "ok",
+      "total_s": 12.897,
+      "predicted_label": "pineapple",
+      "siglip_score": 1.906,
+      "stages": {
+        "classify": 0.032,
+        "domainnet": 0.998,
+        "generate": 10.826,
+        "rembg": 0.859,
+        "score": 0.0,
+        "background": 0.152
+      }
+    },
+    {
+      "seq": 10,
+      "true_class": "crocodile",
+      "file": "sketch_085_000141.jpg",
+      "status": "ok",
+      "total_s": 12.27,
+      "predicted_label": "frog",
+      "siglip_score": -0.078,
+      "stages": {
+        "classify": 0.027,
+        "domainnet": 1.312,
+        "generate": 10.261,
+        "rembg": 0.582,
+        "score": 0.0,
+        "background": 0.071
+      }
+    }
+  ]
+}

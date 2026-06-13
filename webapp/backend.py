@@ -262,23 +262,41 @@ def run_pipeline(req: Req):
             lineart_fn = to_lineart_sd15
             ctrl_size = 512
 
-        candidates = []
+        raw_candidates = []
         ctrls = []
 
         # Generate from DomainNet-matched sketches — one candidate per match
         # If fewer matches than best_of, reuse top match with varied seeds
+        # This stage shows the RAW diffusion output (still with its background).
         for i in range(best_of):
             dn_img = dn_imgs[i] if i < len(dn_imgs) else dn_imgs[0]
             dn_resized = dn_img.resize((ctrl_size, ctrl_size), Image.LANCZOS)
             ctrl = lineart_fn(dn_resized)
             ctrls.append(ctrl)
             cand = gen_fn(ctrl, label, seed + i)
-            candidates.append(cand)
+            raw_candidates.append(cand)
             yield sse_event({"type": "candidate", "index": i,
                              "lineart": img_b64(ctrl), "image": img_b64(cand)})
 
         yield sse_event({"type": "stage_done", "stage": "generate",
-                         "data": {"count": len(candidates)}})
+                         "data": {"count": len(raw_candidates)}})
+
+        # ── Stage 3b: Background removal (its own stage, every candidate) ──
+        # Each raw candidate is sent through BiRefNet and surfaced separately, so
+        # the UI shows "diffusion output" and "background removed" side by side.
+        if do_remove_bg:
+            yield sse_event({"type": "stage_start", "stage": "rembg"})
+            nobg_candidates = []
+            for i, raw in enumerate(raw_candidates):
+                clean = remove_bg_birefnet(raw)
+                nobg_candidates.append(clean)
+                yield sse_event({"type": "candidate_nobg", "index": i,
+                                 "image": img_b64(clean)})
+            yield sse_event({"type": "stage_done", "stage": "rembg",
+                             "data": {"count": len(nobg_candidates)}})
+            candidates = nobg_candidates
+        else:
+            candidates = raw_candidates
 
         # ── Stage 4: Scoring & Selection ──
         yield sse_event({"type": "stage_start", "stage": "score"})
@@ -303,12 +321,11 @@ def run_pipeline(req: Req):
                              "reason": reason,
                          }})
 
-        # ── Stage 5: Background removal ──
+        # ── Stage 5: Finalize ──
+        # Background was already removed per-candidate during generation, so the
+        # winner picked by the selector is already a clean cut-out — just surface it.
         yield sse_event({"type": "stage_start", "stage": "background"})
-        if do_remove_bg:
-            final = remove_bg_birefnet(candidates[pick_idx])
-        else:
-            final = candidates[pick_idx]
+        final = candidates[pick_idx]
 
         yield sse_event({"type": "stage_done", "stage": "background",
                          "data": {"final": img_b64(final), "remove_bg": do_remove_bg}})
